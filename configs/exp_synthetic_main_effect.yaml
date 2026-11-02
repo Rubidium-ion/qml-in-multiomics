@@ -1,0 +1,34 @@
+# Negative control for the cross-modal experiment.
+#
+# Same generator, same noise, but the signal is almost entirely additive main
+# effects. A fidelity kernel has no interaction structure to exploit here, so
+# "no quantum advantage" is the CORRECT answer in this arm. If the quantum arm
+# looks good here, the pipeline is broken, not the physics.
+
+synthetic:
+  n_samples: 400
+  blocks:
+    transcriptomics: 40
+    genomics: 24
+    metabolomics: 16
+  main_effect_frac: 0.95
+  interaction_frac: 0.05
+  cross_modal: false
+  n_informative: 9
+  n_interaction_pairs: 3
+  noise: 0.3
+  class_balance: 0.4
+  seed: 42
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi/16
+  select_k: 10
+  selector: gbdt

@@ -1,0 +1,24 @@
+{
+  "drug": "temozolomide",
+  "n": 959,
+  "pc1_auc": 0.7861817965984632,
+  "pc1_auc_seed_sd": 0.001083108164388159,
+  "pc1_explained_variance_train": 0.1379267225662867,
+  "pc1_test_projection_variance": 687.1857950846355,
+  "pc1_response_spearman_train": 0.3728899858261728,
+  "rank_gaussian_pc1_auc": 0.7626056909911076,
+  "random_orthogonal_auc": 0.5789026078088578,
+  "pc1_perm_null_values": [
+    0.0024154935963451862,
+    0.0024165846407413483,
+    0.002417357172816992
+  ],
+  "pc1_perm_null_95": 0.0024172799196094273,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

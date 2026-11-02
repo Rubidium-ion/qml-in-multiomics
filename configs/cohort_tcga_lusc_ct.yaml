@@ -1,0 +1,36 @@
+# TCGA-LUSC CT-only — imaging already on disk / MinIO rad bucket.
+#
+# 28 cases survive CT ∩ Primary-Tumor RNA ∩ known AJCC stage.
+# Two imaging subjects have no STAR expression on GDC (TCGA-34-2605, TCGA-34-2609).
+# 9 imaging subjects have no reported stage.
+#
+# 28 cases / 5-fold is still a pathway check, not a result.
+
+modalities:
+  - type: imaging_dicom
+    root: /mnt/d/nextcloud/data/medical-imaging/TCGA-LUSC/radiology/TCGA-LUSC
+    metadata_csv: /mnt/d/nextcloud/data/medical-imaging/TCGA-LUSC/radiology/TCGA-LUSC/metadata.csv
+    want_modality: CT
+    modality: imaging_ct
+    window: [40, 400]
+    mask_percentile: 60
+    zscore_volume: false
+    min_slices: 8
+
+labels:
+  path: /home/author/work/agents/shared/qml_in_multiomics/data/tcga_lusc/labels_ct_rna_usable.csv
+  id_column: case_id
+  label_column: label
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi
+  select_k: 10
+  selector: gbdt

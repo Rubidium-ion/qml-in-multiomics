@@ -1,0 +1,413 @@
+{
+  "format": "icbinb_revision_d5d6_cellline_overlap.v1",
+  "created": "2026-10-02T01:23:25+0800",
+  "generated_by": "scripts/d5d6_cellline_overlap.py",
+  "seed": 42,
+  "inputs": {
+    "d3_selection": "benchmarks/results/icbinb_d3_frozen_selection_20drug.json",
+    "d3_sha256": "7218058bd735a539d687a8e399ba0a4722dc1d20e65c0901eb83b3aa70357504",
+    "d3_sha256_verified": true,
+    "model_list": "/home/author/work/agents/shared/qml_in_multiomics/data/gdsc/model_list_latest.csv",
+    "parp_paired_test": "benchmarks/results/parp_paired_test.json",
+    "sample_ids_sha256": {
+      "cytarabine": "c6eab41ec9178a485165ee46f937308a54e53e5af192f3a8594149b6916a589d",
+      "niraparib": "97edcdba0e7307762e92a5d68913ee2f9843dd864a2ce09270cf0b2c3c50376d",
+      "olaparib": "f73fd00943354781bf8c7e56d2dca26b77c78d2787bb2badf6be3a3eeacf4a18",
+      "oxaliplatin": "f73fd00943354781bf8c7e56d2dca26b77c78d2787bb2badf6be3a3eeacf4a18",
+      "cisplatin": "c0d657493503a144fb8069e63e563bf2dc1f43e785a7f5da0e5d77a1545a36e7",
+      "temozolomide": "0f38f242076dcab9649da85048a63322baba589c6886d7f3a8624abc011d3c0c",
+      "veliparib": "572e4d631dbafe7123a00c7ddbc9e621572176eb8aa78ed3b868889f94300400",
+      "vinorelbine": "39e3fa214e0ecd45f8ee4789b7b97155b7b93e847fc4b5e0466fc23df67063b6",
+      "camptothecin": "218027623ef93a9c75b5df0b5903e5abb3b2d4bf41809e5ba18939294c82bc62",
+      "gemcitabine": "4bf756158d58a9a3712609d1bc27a0fddb0a5b653f00941382abb78b5ba5bcbb",
+      "irinotecan": "f4e41207ecdac8f49a9d04fde6c53bab6f19bb3a44c4b2e9196280d1bdc5923d",
+      "rucaparib": "2e504b8add9aaf4eaeb1064a2134febba71820ffa408ecf1a16b80cc78a312e9",
+      "paclitaxel": "9753bcced066093ee6c0db0ab997cc1aac5d608218510caec5f8da63c79ccfa9",
+      "palbociclib": "1056e9f60a90f84b1b51ddfdfa7103c27d6d88639a3722b949a0d5821dccb192",
+      "talazoparib": "36db4038a668a1297f577ddca8de1b2e2bc7292b0f079f80d2503a144d0da9df",
+      "vinblastine": "8181d12dea0c72abdb33b1d4011ebdb0405ad1f2e17369d4605f66df69979b9d",
+      "5fluorouracil": "1056e9f60a90f84b1b51ddfdfa7103c27d6d88639a3722b949a0d5821dccb192",
+      "bortezomib": "fd9a907894b2f7e66bb2e38f6cee75ba0a10f8f6637173088fffcaca107e123a",
+      "docetaxel": "1056e9f60a90f84b1b51ddfdfa7103c27d6d88639a3722b949a0d5821dccb192",
+      "methotrexate": "82472945da43cdea376c463444af76e6f354bc3a09271ea141894b0b3c2ca4f7"
+    }
+  },
+  "drugs": [
+    "cytarabine",
+    "niraparib",
+    "olaparib",
+    "oxaliplatin",
+    "cisplatin",
+    "temozolomide",
+    "veliparib",
+    "vinorelbine",
+    "camptothecin",
+    "gemcitabine",
+    "irinotecan",
+    "rucaparib",
+    "paclitaxel",
+    "palbociclib",
+    "talazoparib",
+    "vinblastine",
+    "5fluorouracil",
+    "bortezomib",
+    "docetaxel",
+    "methotrexate"
+  ],
+  "n_drugs": 20,
+  "cell_lines": {
+    "union_size": 963,
+    "intersection_all20": 574,
+    "per_drug": {
+      "cytarabine": 740,
+      "niraparib": 889,
+      "olaparib": 961,
+      "oxaliplatin": 961,
+      "cisplatin": 757,
+      "temozolomide": 959,
+      "veliparib": 943,
+      "vinorelbine": 950,
+      "camptothecin": 962,
+      "gemcitabine": 954,
+      "irinotecan": 959,
+      "rucaparib": 942,
+      "paclitaxel": 952,
+      "palbociclib": 962,
+      "talazoparib": 950,
+      "vinblastine": 738,
+      "5fluorouracil": 962,
+      "bortezomib": 951,
+      "docetaxel": 962,
+      "methotrexate": 875
+    },
+    "unresolved_in_model_list": [],
+    "n_unresolved": 0,
+    "model_list_universe": 1984,
+    "tissue_distribution": {
+      "Lung": 188,
+      "Haematopoietic and Lymphoid": 167,
+      "Skin": 57,
+      "Central Nervous System": 55,
+      "Breast": 51,
+      "Large Intestine": 48,
+      "Head and Neck": 41,
+      "Ovary": 41,
+      "Bone": 40,
+      "Esophagus": 35,
+      "Kidney": 33,
+      "Pancreas": 31,
+      "Peripheral Nervous System": 31,
+      "Stomach": 28,
+      "Soft Tissue": 18,
+      "Bladder": 18,
+      "Thyroid": 16,
+      "Liver": 15,
+      "Cervix": 14,
+      "Endometrium": 11,
+      "Prostate": 8,
+      "Biliary Tract": 4,
+      "Testis": 3,
+      "Vulva": 3,
+      "Uterus": 3,
+      "Placenta": 2,
+      "Adrenal Gland": 1,
+      "Small Intestine": 1
+    },
+    "tissue_status_distribution": {
+      "Tumour": 581,
+      "Metastasis": 296,
+      "Unknown": 81,
+      "Normal": 5
+    },
+    "species_distribution": {
+      "Homo Sapiens": 961,
+      "Unknown": 2
+    }
+  },
+  "jaccard": {
+    "min_pairwise": 0.6819603753910324,
+    "max_pairwise": 1.0,
+    "mean_pairwise": 0.9153917159804517,
+    "pairs_ge_0.5": 190,
+    "pairs_ge_0.6": 190,
+    "pairs_ge_0.8": 139,
+    "pairs_ge_0.9": 138,
+    "total_pairs": 190
+  },
+  "components": {
+    "primary_J_ge_0.8": {
+      "threshold": 0.8,
+      "n_components": 2,
+      "component_sizes": [
+        17,
+        3
+      ],
+      "components": [
+        [
+          "5fluorouracil",
+          "bortezomib",
+          "camptothecin",
+          "docetaxel",
+          "gemcitabine",
+          "irinotecan",
+          "methotrexate",
+          "niraparib",
+          "olaparib",
+          "oxaliplatin",
+          "paclitaxel",
+          "palbociclib",
+          "rucaparib",
+          "talazoparib",
+          "temozolomide",
+          "veliparib",
+          "vinorelbine"
+        ],
+        [
+          "cisplatin",
+          "cytarabine",
+          "vinblastine"
+        ]
+      ],
+      "edges_J_ge_thr": 139,
+      "total_pairs": 190
+    },
+    "sensitivity_J_ge_0.6": {
+      "threshold": 0.6,
+      "n_components": 1,
+      "component_sizes": [
+        20
+      ],
+      "components": [
+        [
+          "5fluorouracil",
+          "bortezomib",
+          "camptothecin",
+          "cisplatin",
+          "cytarabine",
+          "docetaxel",
+          "gemcitabine",
+          "irinotecan",
+          "methotrexate",
+          "niraparib",
+          "olaparib",
+          "oxaliplatin",
+          "paclitaxel",
+          "palbociclib",
+          "rucaparib",
+          "talazoparib",
+          "temozolomide",
+          "veliparib",
+          "vinblastine",
+          "vinorelbine"
+        ]
+      ],
+      "edges_J_ge_thr": 190,
+      "total_pairs": 190
+    },
+    "sensitivity_J_ge_0.9": {
+      "threshold": 0.9,
+      "n_components": 2,
+      "component_sizes": [
+        17,
+        3
+      ],
+      "components": [
+        [
+          "5fluorouracil",
+          "bortezomib",
+          "camptothecin",
+          "docetaxel",
+          "gemcitabine",
+          "irinotecan",
+          "methotrexate",
+          "niraparib",
+          "olaparib",
+          "oxaliplatin",
+          "paclitaxel",
+          "palbociclib",
+          "rucaparib",
+          "talazoparib",
+          "temozolomide",
+          "veliparib",
+          "vinorelbine"
+        ],
+        [
+          "cisplatin",
+          "cytarabine",
+          "vinblastine"
+        ]
+      ],
+      "edges_J_ge_thr": 138,
+      "total_pairs": 190
+    },
+    "single_component_at_primary": false,
+    "single_component_at_J_ge_0.6": true,
+    "statement": "At the sensitivity threshold J>=0.6 all 20 frozen drugs form a single connected component; at the primary J>=0.8 (and J>=0.9) threshold the graph splits into components of size [17, 3]. In either case the 20 drugs are NOT 20 independent observations; block/cluster bootstrap (not i.i.d. bootstrap) is required for any cross-drug inference. See D5/D6."
+  },
+  "max_low_overlap_subset_J_lt_0.5": {
+    "subset": [
+      "5fluorouracil"
+    ],
+    "size": 1,
+    "pairwise_J_max_in_subset": null,
+    "note": "Exact maximum subset with all pairwise J<0.5 has size 1. The minimum pairwise J over all 190 pairs is 0.6820, so no non-trivial subset (size >= 2) of the 20 frozen drugs achieves pairwise J<0.5. The J<0.5 target is aspirational for this cohort; the component/bootstrap analysis above is the operative handling."
+  },
+  "bootstrap_demo_5parp_pilot": {
+    "description": "Reproducible demonstration of algorithms/d5d6 on the 5-PARP pilot's REAL cross-drug effect (QK - GBDT, tuned/repaired encoding arm from parp_paired_test.json). Blocks are the J>=0.8 overlap components restricted to the 5 pilot drugs. This validates the utility; the full 20-drug bootstrap is available to Bio once the 15 confirmatory drugs are run.",
+    "arm": "tuned",
+    "pilot_order": [
+      "olaparib",
+      "niraparib",
+      "rucaparib",
+      "talazoparib",
+      "veliparib"
+    ],
+    "qsvm_auc": [
+      0.826649896069539,
+      0.8211787440106372,
+      0.7934819570812531,
+      0.731471932447734,
+      0.8072891893385361
+    ],
+    "gbdt_auc": [
+      0.8062795256991686,
+      0.790625336520859,
+      0.7668744345758672,
+      0.7353153052621137,
+      0.7926820391186715
+    ],
+    "delta": [
+      0.020370370370370372,
+      0.030553407489778195,
+      0.026607522505385894,
+      -0.003843372814379742,
+      0.014607150219864584
+    ],
+    "blocks": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "n_blocks": 1,
+    "cluster_bootstrap_median": {
+      "observed": 0.020370370370370372,
+      "ci95_low": 0.020370370370370372,
+      "ci95_high": 0.020370370370370372,
+      "se": 3.469446951953614e-18,
+      "n_boot": 2000,
+      "n_blocks": 1
+    },
+    "perm_signflip": {
+      "mode": "sign_flip",
+      "observed": 0.020370370370370372,
+      "p_value": 1.0,
+      "n_perm": 10000,
+      "null_median": 0.020370370370370372,
+      "null_p975": 0.020370370370370372,
+      "null_p025": -0.020370370370370372
+    },
+    "perm_label_perm": {
+      "mode": "label_perm",
+      "observed": 0.01765901555420386,
+      "p_value": 1.0,
+      "n_perm": 10000,
+      "null_median": 0.01765901555420386,
+      "null_p975": 0.01765901555420386,
+      "null_p025": 0.01765901555420386
+    },
+    "degenerate_note": "All 5 PARP inhibitors form a single J>=0.8 overlap component (n_blocks=1), so resampling one block with replacement is constant and the block-bootstrap CI is degenerate (equal to the observed value). This is the CORRECT behaviour for a fully-overlapping panel, not a bug; it is exactly why the 17+3 component structure at J>=0.8 matters and why the reusability self-test below uses two blocks."
+  },
+  "reusability_self_test_synthetic": {
+    "description": "Same algorithms/d5d6 utility driven with the real 20-drug J>=0.8 2-block structure (components of size 17 and 3) and a seeded synthetic effect vector. Proves the cluster-bootstrap and constrained-permutation machinery produce a non-degenerate CI and a valid null distribution on a MULTI-block panel. Labelled synthetic: it validates the code path, not biology.",
+    "seed": 42,
+    "blocks": [
+      [
+        0,
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19
+      ],
+      [
+        3,
+        4,
+        18
+      ]
+    ],
+    "n_blocks": 2,
+    "block_sizes": [
+      17,
+      3
+    ],
+    "synthetic_values": [
+      0.045235853987721564,
+      -0.021999205312024782,
+      0.06752255979032287,
+      0.0770282358195607,
+      -0.06755175943269183,
+      -0.03510897534311591,
+      0.03639202015836427,
+      0.014187870382820888,
+      0.029159942124785558,
+      -0.01265219637867901,
+      0.07396989874314143,
+      0.06888959677144742,
+      0.0333015348780608,
+      0.08636206034840165,
+      0.053375467112602284,
+      -0.012964623144161913,
+      0.04843753920412494,
+      -0.01794413004144995,
+      0.07392251506536363,
+      0.027503704450687352
+    ],
+    "cluster_bootstrap_median": {
+      "observed": 0.03484677751821254,
+      "ci95_low": 0.0333015348780608,
+      "ci95_high": 0.07392251506536363,
+      "se": 0.017159325393885563,
+      "n_boot": 20000,
+      "n_blocks": 2
+    },
+    "perm_signflip": {
+      "mode": "sign_flip",
+      "observed": 0.03484677751821254,
+      "p_value": 0.5078492150784921,
+      "n_perm": 10000,
+      "null_median": 0.031230738501423178,
+      "null_p975": 0.03484677751821254,
+      "null_p025": -0.03484677751821254
+    },
+    "perm_label_perm": {
+      "mode": "label_perm",
+      "observed": 0.028353395459264095,
+      "p_value": 0.9156084391560844,
+      "n_perm": 10000,
+      "null_median": 0.028353395459264095,
+      "null_p975": 0.028353395459264102,
+      "null_p025": 0.028353395459264092
+    }
+  },
+  "metadata_limitations": [
+    "Cell-line metadata (tissue, status, species) is the Sanger model_list_latest.csv snapshot; 2 of 963 union cell lines have species='Unknown' (all 963 resolve to model_id, tissue_status is populated for all).",
+    "sample_ids.json per drug is the *frozen* cell-line set used for modelling (post QC/exclusion). It may differ from the raw GDSC2 cell-line universe for that drug; Jaccard here is on the modelled sets, which is the correct basis for the D5/D6 non-independence argument.",
+    "The 5-PARP pilot is the only arm with real cross-drug effect deltas on disk; the 15 confirmatory drugs have no QK arm yet, so their bootstrap values are pending the D3 20-drug quantum run."
+  ],
+  "sha256": "088315886520fee1c517cc2c900d0ab5f7d1bb9d6fe216006219f0b6b0b61462"
+}

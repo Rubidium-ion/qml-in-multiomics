@@ -1,0 +1,47 @@
+# TCGA imaging cohort — pointer config (CT), data not yet downloaded.
+#
+# IMPORTANT data-location note: TCGA *imaging* is hosted on TCIA, not GDC.
+# GDC hosts the omics arms (RNA, mutation, methylation — already wired via the
+# transcriptomics/genomics adapters for TCGA-BRCA). The TCIA collections
+# "TCGA-LUAD", "TCGA-BRCA", "TCGA-KIRC", ... carry the radiology DICOM.
+# Mixing them in one experiment therefore means TWO downloads + a shared
+# patient-key manifest: TCIA subject id (TCGA-XX-XXXX barcode) <-> GDC case id.
+#
+# Host: TCIA, collection TCGA-<cancer>
+# Access: TCIA account + NBIA Data Retriever / API.
+# Layout expected by the imaging_dicom adapter:
+#     data/tcga_tcia_ct/<subject_id>/<CT_series_dicom_files...>
+# Labels: TCGA clinical/phenotype tables from GDC (e.g. stage, subtype) keyed
+# by patient barcode — write a labels.csv with subject_id = barcode.
+#
+# Omics-only runs need no change (existing adapters). This config is the
+# imaging arm for the CT+RNA fusion experiment once both sides are staged.
+
+modalities:
+  - type: imaging_dicom
+    root: data/tcga_tcia_ct
+    modality: imaging_ct
+    window: [40, 400]
+    mask_percentile: 0
+
+# labels:
+#   path: data/tcga_tcia_ct/labels.csv
+#   id_column: subject_id
+#   label_column: label
+#   binarize: threshold:0.5
+
+integration:
+  max_missing: 0.2
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi        # sweep per cohort; do NOT inherit from another dataset
+  select_k: 10
+  selector: gbdt

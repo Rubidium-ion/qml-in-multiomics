@@ -1,0 +1,11 @@
+comparison,jaccard_threshold,left_out_component,component_drugs,n_remaining,median_delta_without
+qsvm_minus_tuned_svm_rbf,0.6,0,5fluorouracil;bortezomib;camptothecin;cisplatin;cytarabine;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinblastine;vinorelbine,0,
+qsvm_minus_tuned_svm_rbf,0.8,0,5fluorouracil;bortezomib;camptothecin;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinorelbine,3,-0.01490656076614453
+qsvm_minus_tuned_svm_rbf,0.8,1,cisplatin;cytarabine;vinblastine,17,-0.0067962595457351505
+qsvm_minus_tuned_svm_rbf,0.9,0,5fluorouracil;bortezomib;camptothecin;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinorelbine,3,-0.01490656076614453
+qsvm_minus_tuned_svm_rbf,0.9,1,cisplatin;cytarabine;vinblastine,17,-0.0067962595457351505
+qsvm_minus_tuned_gbdt,0.6,0,5fluorouracil;bortezomib;camptothecin;cisplatin;cytarabine;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinblastine;vinorelbine,0,
+qsvm_minus_tuned_gbdt,0.8,0,5fluorouracil;bortezomib;camptothecin;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinorelbine,3,-0.0031507992929070325
+qsvm_minus_tuned_gbdt,0.8,1,cisplatin;cytarabine;vinblastine,17,0.0035548039059174474
+qsvm_minus_tuned_gbdt,0.9,0,5fluorouracil;bortezomib;camptothecin;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinorelbine,3,-0.0031507992929070325
+qsvm_minus_tuned_gbdt,0.9,1,cisplatin;cytarabine;vinblastine,17,0.0035548039059174474

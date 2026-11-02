@@ -1,0 +1,21 @@
+drug,class,is_pilot,role,note
+cytarabine,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+niraparib,PARP,True,observed pilot,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+olaparib,PARP,True,observed pilot,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+oxaliplatin,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+cisplatin,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+temozolomide,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+veliparib,PARP,True,observed pilot,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+vinorelbine,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+camptothecin,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+gemcitabine,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+irinotecan,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+rucaparib,PARP,True,observed pilot,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+paclitaxel,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+palbociclib,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+talazoparib,PARP,True,observed pilot,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+vinblastine,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+5fluorouracil,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+bortezomib,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+docetaxel,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.
+methotrexate,cytotoxic,False,confirmatory extension,Five PARP inhibitors are observed pilot; non-PARP cytotoxic drugs comprise frozen confirmatory extension.

@@ -1,0 +1,511 @@
+{
+  "format": "icbinb_d3_frozen_pi16_3seed_tuned_classical_summary.v1",
+  "selection_manifest": "benchmarks/results/icbinb_d3_frozen_selection_20drug.json",
+  "selection_sha256": "7218058bd735a539d687a8e399ba0a4722dc1d20e65c0901eb83b3aa70357504",
+  "n_drugs": 20,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "quantum_reused": true,
+  "quantum_scale": 0.19634954084936207,
+  "nested_classical_cv": {
+    "inner_folds": 3,
+    "selection_scope": "outer training partition only",
+    "scoring": "roc_auc",
+    "svm_grid": {
+      "C": [
+        0.1,
+        1,
+        10,
+        100
+      ],
+      "gamma": [
+        "scale",
+        0.001,
+        0.01,
+        0.1
+      ]
+    },
+    "gbdt_grid": {
+      "n_estimators": [
+        100,
+        200,
+        400
+      ],
+      "max_depth": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "learning_rate": [
+        0.03,
+        0.1
+      ]
+    }
+  },
+  "validation": {
+    "all_60_outer_feature_sets_exactly_match_cached_qk": true,
+    "details": [
+      {
+        "drug": "cytarabine",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "cytarabine",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "cytarabine",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "niraparib",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "niraparib",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "niraparib",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "olaparib",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "olaparib",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "olaparib",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "oxaliplatin",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "oxaliplatin",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "oxaliplatin",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "cisplatin",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "cisplatin",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "cisplatin",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "temozolomide",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "temozolomide",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "temozolomide",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "veliparib",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "veliparib",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "veliparib",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "vinorelbine",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "vinorelbine",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "vinorelbine",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "camptothecin",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "camptothecin",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "camptothecin",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "gemcitabine",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "gemcitabine",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "gemcitabine",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "irinotecan",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "irinotecan",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "irinotecan",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "rucaparib",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "rucaparib",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "rucaparib",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "paclitaxel",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "paclitaxel",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "paclitaxel",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "palbociclib",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "palbociclib",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "palbociclib",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "talazoparib",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "talazoparib",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "talazoparib",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "vinblastine",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "vinblastine",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "vinblastine",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "5fluorouracil",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "5fluorouracil",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "5fluorouracil",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "bortezomib",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "bortezomib",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "bortezomib",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "docetaxel",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "docetaxel",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "docetaxel",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "methotrexate",
+        "seed": 42,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "methotrexate",
+        "seed": 314,
+        "outer_features_match_cached_qk": true
+      },
+      {
+        "drug": "methotrexate",
+        "seed": 2718,
+        "outer_features_match_cached_qk": true
+      }
+    ]
+  },
+  "per_drug_csv": "benchmarks/results/icbinb_d3_frozen_pi16_3seed_tuned_classical_per_drug.csv",
+  "analyses": {
+    "qsvm_minus_tuned_svm_rbf": {
+      "metric": "AUC [0,1]",
+      "n_drugs": 20,
+      "median_delta": -0.00993544267196685,
+      "mean_delta": -0.008872173464297644,
+      "n_favouring_qsvm": 6,
+      "range": [
+        -0.028081225602828146,
+        0.00782770268068922
+      ],
+      "wilcoxon_two_sided": {
+        "statistic": 26.0,
+        "p": 0.0019855499267578125
+      },
+      "wilcoxon_margin_0_05_alternative_median_less": {
+        "statistic": 0.0,
+        "p": 9.5367431640625e-07,
+        "interpretation": "Small p supports median QK advantage below +0.05."
+      },
+      "signflip_permutation": {
+        "n_permutations": 100000,
+        "statistic": "mean drug-level delta AUC",
+        "observed": -0.008872173464297644,
+        "p_two_sided": 0.0011099889001109989,
+        "null_q025": -0.0058256245020625085,
+        "null_q975": 0.005741544367475354
+      },
+      "effect_interval": {
+        "n_boot": 10000,
+        "median_ci95": [
+          -0.014667059969117416,
+          -0.0005205046378978969
+        ],
+        "hodges_lehmann": -0.008632032946856346,
+        "hodges_lehmann_bootstrap_ci95": [
+          -0.013410676147224649,
+          -0.00448229824742354
+        ]
+      },
+      "cluster_aware_bootstrap": {
+        "n_blocks": 2,
+        "blocks": [
+          [
+            "5fluorouracil",
+            "bortezomib",
+            "camptothecin",
+            "docetaxel",
+            "gemcitabine",
+            "irinotecan",
+            "methotrexate",
+            "niraparib",
+            "olaparib",
+            "oxaliplatin",
+            "paclitaxel",
+            "palbociclib",
+            "rucaparib",
+            "talazoparib",
+            "temozolomide",
+            "veliparib",
+            "vinorelbine"
+          ],
+          [
+            "cisplatin",
+            "cytarabine",
+            "vinblastine"
+          ]
+        ],
+        "n_boot": 10000,
+        "observed_median": -0.00993544267196685,
+        "ci95": [
+          -0.01490656076614453,
+          -0.0067962595457351505
+        ],
+        "note": "J>=0.8 overlap-component bootstrap; components, not drugs, resampled."
+      }
+    },
+    "qsvm_minus_tuned_gbdt": {
+      "metric": "AUC [0,1]",
+      "n_drugs": 20,
+      "median_delta": 0.0003987291436974849,
+      "mean_delta": -0.0002835263010202294,
+      "n_favouring_qsvm": 10,
+      "range": [
+        -0.01853423416070706,
+        0.01862299081732699
+      ],
+      "wilcoxon_two_sided": {
+        "statistic": 103.0,
+        "p": 0.956329345703125
+      },
+      "wilcoxon_margin_0_05_alternative_median_less": {
+        "statistic": 0.0,
+        "p": 9.5367431640625e-07,
+        "interpretation": "Small p supports median QK advantage below +0.05."
+      },
+      "signflip_permutation": {
+        "n_permutations": 100000,
+        "statistic": "mean drug-level delta AUC",
+        "observed": -0.0002835263010202294,
+        "p_two_sided": 0.9075509244907551,
+        "null_q025": -0.004658186739830172,
+        "null_q975": 0.004655419543611023
+      },
+      "effect_interval": {
+        "n_boot": 10000,
+        "median_ci95": [
+          -0.008771386952693305,
+          0.0063463021113540265
+        ],
+        "hodges_lehmann": -9.532486334092499e-05,
+        "hodges_lehmann_bootstrap_ci95": [
+          -0.005496453869352454,
+          0.0050894401868569385
+        ]
+      },
+      "cluster_aware_bootstrap": {
+        "n_blocks": 2,
+        "blocks": [
+          [
+            "5fluorouracil",
+            "bortezomib",
+            "camptothecin",
+            "docetaxel",
+            "gemcitabine",
+            "irinotecan",
+            "methotrexate",
+            "niraparib",
+            "olaparib",
+            "oxaliplatin",
+            "paclitaxel",
+            "palbociclib",
+            "rucaparib",
+            "talazoparib",
+            "temozolomide",
+            "veliparib",
+            "vinorelbine"
+          ],
+          [
+            "cisplatin",
+            "cytarabine",
+            "vinblastine"
+          ]
+        ],
+        "n_boot": 10000,
+        "observed_median": 0.0003987291436974849,
+        "ci95": [
+          -0.0031507992929070325,
+          0.0035548039059174474
+        ],
+        "note": "J>=0.8 overlap-component bootstrap; components, not drugs, resampled."
+      }
+    }
+  },
+  "interpretation": "This is the confirmatory classical comparator arm for the frozen D3 sample; prior fixed-default classical comparisons are sensitivity analyses only.",
+  "sha256": "e5432b019df53eec8a02f88f23647808d5893a1dab4aa15bfba935b750cf64c8"
+}

@@ -1,0 +1,3 @@
+comparison,criterion,subset,subset_size,median_delta,interpretation
+qsvm_minus_tuned_svm_rbf,pairwise J<0.5,5fluorouracil,1,-0.006795607091815111,Non-inferential singleton: no pair of drugs meets J<0.5.
+qsvm_minus_tuned_gbdt,pairwise J<0.5,5fluorouracil,1,0.015626709096793274,Non-inferential singleton: no pair of drugs meets J<0.5.

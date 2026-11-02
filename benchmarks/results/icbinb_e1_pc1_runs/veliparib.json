@@ -1,0 +1,24 @@
+{
+  "drug": "veliparib",
+  "n": 943,
+  "pc1_auc": 0.8510252935718702,
+  "pc1_auc_seed_sd": 0.00038483832220835844,
+  "pc1_explained_variance_train": 0.136147270600001,
+  "pc1_test_projection_variance": 681.6843302408854,
+  "pc1_response_spearman_train": 0.45344778739289926,
+  "rank_gaussian_pc1_auc": 0.7930047219925694,
+  "random_orthogonal_auc": 0.567505849948036,
+  "pc1_perm_null_values": [
+    0.0024332236498594284,
+    0.0024374909698963165,
+    0.0024391848128288984
+  ],
+  "pc1_perm_null_95": 0.0024390154285356402,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

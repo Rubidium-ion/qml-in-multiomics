@@ -1,0 +1,208 @@
+{
+  "format": "icbinb_d3_tuned_classical_outer_nested_cv.v1",
+  "drug": "veliparib",
+  "n_samples": 943,
+  "seed": 314,
+  "outer_cv": {
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 314
+  },
+  "inner_cv": {
+    "n_splits": 3,
+    "shuffle": true,
+    "random_state": "seed*100+outer_fold",
+    "scoring": "roc_auc"
+  },
+  "scale": 0.19634954084936207,
+  "n_qubits_features": 12,
+  "feature_selection": "GBDT importance fitted on outer training fold only; identical outer selection protocol to completed QK runs",
+  "qk_reused": "benchmarks/results/icbinb_d3_runs/veliparib_seed314_pi16.json",
+  "qk_auc_folds": [
+    0.7872340425531915,
+    0.799220857057237,
+    0.8523936170212766,
+    0.773049645390071,
+    0.8057944771389768
+  ],
+  "outer_features": [
+    [
+      "SHLD1",
+      "PARP1",
+      "FANCD2",
+      "NBN",
+      "FANCC",
+      "BLM",
+      "FANCL",
+      "WRN",
+      "PARP3",
+      "MAD2L2",
+      "ABRAXAS1",
+      "SHLD3"
+    ],
+    [
+      "SHLD1",
+      "BLM",
+      "WRN",
+      "FANCD2",
+      "FANCC",
+      "USP11",
+      "PARP1",
+      "SLX4",
+      "SHLD3",
+      "LIG3",
+      "RPA2",
+      "MAD2L2"
+    ],
+    [
+      "SHLD1",
+      "BLM",
+      "FANCD2",
+      "FANCC",
+      "WRN",
+      "PARP1",
+      "SLX4",
+      "FANCL",
+      "ABRAXAS1",
+      "RAD51AP1",
+      "RAD50",
+      "POLQ"
+    ],
+    [
+      "SHLD1",
+      "ABRAXAS1",
+      "BLM",
+      "FANCD2",
+      "USP11",
+      "MAD2L2",
+      "RPA2",
+      "XRCC2",
+      "PARP1",
+      "XRCC3",
+      "WRN",
+      "FANCC"
+    ],
+    [
+      "BLM",
+      "SHLD1",
+      "ABRAXAS1",
+      "PARP2",
+      "SLX4",
+      "PARP1",
+      "WRN",
+      "FANCC",
+      "FANCD2",
+      "SHLD3",
+      "XRCC2",
+      "FANCF"
+    ]
+  ],
+  "models": {
+    "SVM-RBF": {
+      "auc": 0.7980246462933326,
+      "auc_sd": 0.02399900730142328,
+      "bal_acc": 0.617628109080012,
+      "bal_acc_sd": 0.10006732907864198,
+      "auc_folds": [
+        0.7993706922385375,
+        0.7780940964938566,
+        0.839095744680851,
+        0.8032292138222423,
+        0.7703334842311755
+      ],
+      "bal_acc_folds": [
+        0.65260713215463,
+        0.7413844770752173,
+        0.6941489361702128,
+        0.5,
+        0.5
+      ],
+      "selected_params": [
+        {
+          "C": 0.1,
+          "gamma": "scale"
+        },
+        {
+          "C": 1.0,
+          "gamma": "scale"
+        },
+        {
+          "C": 100.0,
+          "gamma": 0.1
+        },
+        {
+          "C": 100.0,
+          "gamma": 0.001
+        },
+        {
+          "C": 0.1,
+          "gamma": 0.001
+        }
+      ],
+      "inner_best_auc": [
+        0.8183484058188549,
+        0.8327241499874619,
+        0.8137995540709314,
+        0.8168427952566194,
+        0.8268678892623506
+      ]
+    },
+    "GBDT": {
+      "auc": 0.8032002253195243,
+      "auc_sd": 0.030980006908832017,
+      "bal_acc": 0.6956628958146039,
+      "bal_acc_sd": 0.024089997722851694,
+      "auc_folds": [
+        0.8011687144141444,
+        0.7713515133353313,
+        0.8620715130023641,
+        0.7896484080277653,
+        0.7917609778180171
+      ],
+      "bal_acc_folds": [
+        0.7342673059634401,
+        0.6990560383578064,
+        0.7045656028368794,
+        0.6666666666666666,
+        0.6737588652482269
+      ],
+      "selected_params": [
+        {
+          "learning_rate": 0.03,
+          "max_depth": 4,
+          "n_estimators": 200
+        },
+        {
+          "learning_rate": 0.03,
+          "max_depth": 4,
+          "n_estimators": 200
+        },
+        {
+          "learning_rate": 0.03,
+          "max_depth": 3,
+          "n_estimators": 100
+        },
+        {
+          "learning_rate": 0.03,
+          "max_depth": 4,
+          "n_estimators": 400
+        },
+        {
+          "learning_rate": 0.03,
+          "max_depth": 2,
+          "n_estimators": 200
+        }
+      ],
+      "inner_best_auc": [
+        0.8244968243842496,
+        0.8380435967399831,
+        0.8129588953680278,
+        0.8146586101387406,
+        0.8210765525017467
+      ]
+    }
+  },
+  "wall_clock_sec": 33.34,
+  "qsvm_minus_svm_rbf_auc": 0.005513881538818044,
+  "qsvm_minus_gbdt_auc": 0.0003383025126263428
+}

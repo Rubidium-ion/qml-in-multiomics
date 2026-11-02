@@ -1,0 +1,238 @@
+{
+  "format": "icbinb_revision_d3_frozen_selection.v1",
+  "created": "2026-10-01T15:53:48+0800",
+  "generated_by": "scripts/freeze_d3_selection.py",
+  "seed": 42,
+  "gate_threshold": 0.4,
+  "sampling_frame_n": 22,
+  "total_selected": 20,
+  "per_quintile": 4,
+  "pilot_drugs": [
+    "olaparib",
+    "niraparib",
+    "rucaparib",
+    "talazoparib",
+    "veliparib"
+  ],
+  "confirmatory_extension_n": 15,
+  "if_quintile_edges": [
+    0.422931,
+    0.436128,
+    0.442566,
+    0.457888,
+    0.460647,
+    0.482797
+  ],
+  "auc_tertile_edges": [
+    0.63342,
+    0.787229,
+    0.811408,
+    0.863685
+  ],
+  "replacement_rule": "Greedy fill to 4 per IF quintile; if underfilled, take closest-IF unselected drug, tie-broken by name. Logged below.",
+  "replacement_log": [],
+  "pre_quantum_inputs": "IF (full, shap 0.52.0) + GBDT AUC only; no quantum results viewed",
+  "selected": [
+    {
+      "drug": "cytarabine",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.431884,
+      "gbdt_auc": 0.796494,
+      "quintile": 0,
+      "auc_tertile": 1,
+      "n": 740
+    },
+    {
+      "drug": "niraparib",
+      "class": "PARP",
+      "is_pilot": true,
+      "if_full": 0.435891,
+      "gbdt_auc": 0.853488,
+      "quintile": 0,
+      "auc_tertile": 2,
+      "n": 889
+    },
+    {
+      "drug": "olaparib",
+      "class": "PARP",
+      "is_pilot": true,
+      "if_full": 0.426516,
+      "gbdt_auc": 0.860125,
+      "quintile": 0,
+      "auc_tertile": 2,
+      "n": 961
+    },
+    {
+      "drug": "oxaliplatin",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.422931,
+      "gbdt_auc": 0.863685,
+      "quintile": 0,
+      "auc_tertile": 2,
+      "n": 961
+    },
+    {
+      "drug": "cisplatin",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.441625,
+      "gbdt_auc": 0.808544,
+      "quintile": 1,
+      "auc_tertile": 1,
+      "n": 757
+    },
+    {
+      "drug": "temozolomide",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.439742,
+      "gbdt_auc": 0.794794,
+      "quintile": 1,
+      "auc_tertile": 1,
+      "n": 959
+    },
+    {
+      "drug": "veliparib",
+      "class": "PARP",
+      "is_pilot": true,
+      "if_full": 0.437075,
+      "gbdt_auc": 0.838777,
+      "quintile": 1,
+      "auc_tertile": 2,
+      "n": 943
+    },
+    {
+      "drug": "vinorelbine",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.442338,
+      "gbdt_auc": 0.811408,
+      "quintile": 1,
+      "auc_tertile": 2,
+      "n": 950
+    },
+    {
+      "drug": "camptothecin",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.456865,
+      "gbdt_auc": 0.813376,
+      "quintile": 2,
+      "auc_tertile": 2,
+      "n": 962
+    },
+    {
+      "drug": "gemcitabine",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.450665,
+      "gbdt_auc": 0.752325,
+      "quintile": 2,
+      "auc_tertile": 0,
+      "n": 954
+    },
+    {
+      "drug": "irinotecan",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.450085,
+      "gbdt_auc": 0.803292,
+      "quintile": 2,
+      "auc_tertile": 1,
+      "n": 959
+    },
+    {
+      "drug": "rucaparib",
+      "class": "PARP",
+      "is_pilot": true,
+      "if_full": 0.442907,
+      "gbdt_auc": 0.819164,
+      "quintile": 2,
+      "auc_tertile": 2,
+      "n": 942
+    },
+    {
+      "drug": "paclitaxel",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.459895,
+      "gbdt_auc": 0.787229,
+      "quintile": 3,
+      "auc_tertile": 1,
+      "n": 952
+    },
+    {
+      "drug": "palbociclib",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.45857,
+      "gbdt_auc": 0.808476,
+      "quintile": 3,
+      "auc_tertile": 1,
+      "n": 962
+    },
+    {
+      "drug": "talazoparib",
+      "class": "PARP",
+      "is_pilot": true,
+      "if_full": 0.459192,
+      "gbdt_auc": 0.776255,
+      "quintile": 3,
+      "auc_tertile": 0,
+      "n": 950
+    },
+    {
+      "drug": "vinblastine",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.458944,
+      "gbdt_auc": 0.801615,
+      "quintile": 3,
+      "auc_tertile": 1,
+      "n": 738
+    },
+    {
+      "drug": "5fluorouracil",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.460835,
+      "gbdt_auc": 0.766297,
+      "quintile": 4,
+      "auc_tertile": 0,
+      "n": 962
+    },
+    {
+      "drug": "bortezomib",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.474603,
+      "gbdt_auc": 0.722575,
+      "quintile": 4,
+      "auc_tertile": 0,
+      "n": 951
+    },
+    {
+      "drug": "docetaxel",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.473084,
+      "gbdt_auc": 0.745757,
+      "quintile": 4,
+      "auc_tertile": 0,
+      "n": 962
+    },
+    {
+      "drug": "methotrexate",
+      "class": "cytotoxic",
+      "is_pilot": false,
+      "if_full": 0.482797,
+      "gbdt_auc": 0.713,
+      "quintile": 4,
+      "auc_tertile": 0,
+      "n": 875
+    }
+  ],
+  "sha256": "7218058bd735a539d687a8e399ba0a4722dc1d20e65c0901eb83b3aa70357504"
+}

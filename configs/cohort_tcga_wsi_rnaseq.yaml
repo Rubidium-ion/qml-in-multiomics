@@ -1,0 +1,53 @@
+# TCGA / GDC — diagnostic WSI + RNA-seq on the SAME patients
+#
+# Access: https://portal.gdc.cancer.gov/ (open tier: expression + diagnostic slides)
+# Use gdc-client with a manifest; slides are .svs, expression is per-sample TSV.
+#
+# This is the true multi-modal fusion config: pathology and transcriptomics keyed
+# by the same TCGA patient barcode (TCGA-XX-XXXX). Alignment is by explicit ID,
+# and `fuse()` raises rather than silently concatenating mismatched rows.
+#
+# Barcode discipline matters here. A slide id is TCGA-BH-A0B3-01Z-00-DX1 while an
+# expression aliquot is TCGA-BH-A0B3-01A-11R-A115-07. Truncate BOTH to the
+# 12-char patient barcode before matching, or the intersection silently comes out
+# empty and you get "no shared samples" for a cohort that fully overlaps.
+
+modalities:
+  - type: pathology_wsi
+    root: ../data/tcga_brca_slides          # .svs diagnostic slides
+    modality: pathology
+    level: -1
+    stain_normalize: macenko
+
+  - type: transcriptomics
+    path: ../data/tcga_brca/rnaseq_tpm.csv  # rows = patient barcode
+    modality: transcriptomics
+    log1p: true
+    top_var_genes: 2000
+    # whitelist: ../data/ddr_whitelist68.json   # force-rescue pathway genes
+
+labels:
+  path: ../data/tcga_brca/labels.csv        # patient_barcode,label
+  id_column: patient_barcode
+  label_column: label
+
+integration:
+  max_missing: 0.2
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi
+  select_k: 12
+  selector: gbdt
+
+# Note: with two modalities fused, select_k=12 means the 12 qubits are shared
+# across pathology and transcriptomics features. Check `selection.genes_per_fold`
+# in the result JSON — if all 12 come from one modality, the "multi-modal" claim
+# is not supported by what the model actually used.

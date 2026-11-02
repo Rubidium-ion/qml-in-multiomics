@@ -1,0 +1,16 @@
+{
+  "status": "READY_FOR_OWNER_UPLOAD",
+  "publication_url": "PENDING_OWNER_UPLOAD",
+  "base_commit": "3121cb507f7c3a8c1465c0794d4ea4fffbe6eb50",
+  "extra_files_not_in_base_commit": ["scripts/run_icbinb_e1_pc1.py (working-tree E1 driver, pending commit)"],
+  "scrub": "author names/paths/hosts replaced on mirror copies; originals untouched",
+  "include": ["scripts", "configs", "qmlmo", "algorithms", "benchmarks/results icbinb_* artifacts", "submission appendix lists", "statements.tex"],
+  "exclude": ["data/", ".venv/", "secrets/", "logs/", "manuscript tex/pdf"],
+  "reproduction_commands": [
+    "python scripts/build_gdsc_cohort.py --drug Olaparib --binarize quantile:25",
+    "python scripts/run_icbinb_d3_tuned_classical.py --help",
+    "python scripts/run_icbinb_d1_if_bootstrap.py --help",
+    "python scripts/run_icbinb_d5d6_formal.py",
+    "python scripts/run_icbinb_e1_pc1.py --help"
+  ]
+}

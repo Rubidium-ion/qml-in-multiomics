@@ -1,0 +1,24 @@
+{
+  "drug": "olaparib",
+  "n": 961,
+  "pc1_auc": 0.8393380731922399,
+  "pc1_auc_seed_sd": 0.0007698744891196134,
+  "pc1_explained_variance_train": 0.13780364394187927,
+  "pc1_test_projection_variance": 687.9843546549479,
+  "pc1_response_spearman_train": 0.4427117317435658,
+  "rank_gaussian_pc1_auc": 0.7349788989669942,
+  "random_orthogonal_auc": 0.6099121708868732,
+  "pc1_perm_null_values": [
+    0.0024041070137172937,
+    0.0024209236726164818,
+    0.0024126977659761906
+  ],
+  "pc1_perm_null_95": 0.0024201010819524527,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

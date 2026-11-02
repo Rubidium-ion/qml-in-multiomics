@@ -1,0 +1,8 @@
+name: svm_rbf
+version: 0.1.0
+framework: sklearn
+quantum: false
+description: Classical RBF-kernel SVM baseline
+params:
+  C: 1.0
+  gamma: scale

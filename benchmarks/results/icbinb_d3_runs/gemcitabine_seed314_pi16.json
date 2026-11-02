@@ -1,0 +1,169 @@
+{
+  "drug": "Gemcitabine",
+  "cohort": "data/gdsc_gemcitabine_quantile",
+  "n_samples": 954,
+  "quantum": true,
+  "kernel": "fidelity |<psi_i|psi_j>|^2, exact statevector, ZZFeatureMap(12q, reps=2, linear)",
+  "n_qubits": 12,
+  "reps": 2,
+  "entanglement": "linear",
+  "encoding_scale": 0.19634954084936207,
+  "kernel_offdiag_mean": 0.6352336171015661,
+  "hilbert_dim": 4096,
+  "feature_selection": "GBDT importance, refit inside each training fold",
+  "folds": 5,
+  "seed": 314,
+  "wall_clock_sec": 54.0,
+  "genes_per_fold": [
+    [
+      "SHLD1",
+      "ABRAXAS1",
+      "RPA2",
+      "PALB2",
+      "FANCE",
+      "UIMC1",
+      "MAD2L2",
+      "FANCL",
+      "TP53BP1",
+      "PARP1",
+      "MRE11",
+      "CHEK1"
+    ],
+    [
+      "SHLD1",
+      "FANCE",
+      "UIMC1",
+      "ABRAXAS1",
+      "RPA2",
+      "FANCL",
+      "CHEK2",
+      "RBBP8",
+      "TP53BP1",
+      "SHLD2",
+      "MRE11",
+      "PARP1"
+    ],
+    [
+      "SHLD1",
+      "ABRAXAS1",
+      "RAD18",
+      "FANCL",
+      "PARP1",
+      "UIMC1",
+      "WRN",
+      "CHEK2",
+      "NBN",
+      "RBBP8",
+      "EME1",
+      "PALB2"
+    ],
+    [
+      "SHLD1",
+      "RAD18",
+      "ABRAXAS1",
+      "UIMC1",
+      "FANCL",
+      "CHEK2",
+      "RPA2",
+      "SLX4",
+      "FANCC",
+      "WRN",
+      "MUS81",
+      "POLB"
+    ],
+    [
+      "SHLD1",
+      "RPA2",
+      "FANCL",
+      "ABRAXAS1",
+      "PARP1",
+      "FANCE",
+      "RAD50",
+      "EME1",
+      "WRN",
+      "RAD18",
+      "UIMC1",
+      "RAD51"
+    ]
+  ],
+  "models": {
+    "QSVM": {
+      "auc": 0.7265771462579973,
+      "auc_sd": 0.014720266334605967,
+      "bal_acc": 0.5898511506224272,
+      "bal_acc_sd": 0.01981465683450434,
+      "quantum": true,
+      "auc_folds": [
+        0.7112470862470862,
+        0.7481060606060607,
+        0.7128496503496504,
+        0.7395104895104895,
+        0.7211724445766998
+      ],
+      "bal_acc_folds": [
+        0.6040938228438228,
+        0.6177884615384616,
+        0.5624271561771562,
+        0.5901806526806527,
+        0.5747656598720429
+      ]
+    },
+    "SVM-RBF": {
+      "auc": 0.703637851510192,
+      "auc_sd": 0.020711381371056277,
+      "bal_acc": 0.617914930813867,
+      "bal_acc_sd": 0.030782991519345246,
+      "quantum": false,
+      "auc_folds": [
+        0.6882284382284383,
+        0.74256993006993,
+        0.6850233100233101,
+        0.6971153846153846,
+        0.7052521946138967
+      ],
+      "bal_acc_folds": [
+        0.5901806526806527,
+        0.6317016317016317,
+        0.5728438228438228,
+        0.6491113053613053,
+        0.6457372414819224
+      ]
+    },
+    "GBDT": {
+      "auc": 0.722190398254228,
+      "auc_sd": 0.018085875584265054,
+      "bal_acc": 0.6352979467341169,
+      "bal_acc_sd": 0.017931023637726043,
+      "quantum": false,
+      "auc_folds": [
+        0.7494172494172493,
+        0.7025058275058275,
+        0.701923076923077,
+        0.7258158508158508,
+        0.7312899866091355
+      ],
+      "bal_acc_folds": [
+        0.6282779720279721,
+        0.6281322843822844,
+        0.6109411421911422,
+        0.6453234265734266,
+        0.6638149084957595
+      ]
+    }
+  },
+  "quantum_advantage_vs_rbf": 0.022939294747805317,
+  "paired_test": {
+    "test": "paired two-sided t-test on per-fold AUC difference (QSVM - SVM-RBF)",
+    "n_folds": 5,
+    "mean_diff": 0.022939294747805407,
+    "sd_diff": 0.013734583850525074,
+    "t": 3.7346470027947603,
+    "p": 0.020214951446711277,
+    "ci95": [
+      0.00588555645029756,
+      0.03999303304531325
+    ],
+    "note": "Folds share training data, so this is not independent-sample inference; treat it as a descriptive effect size with spread, not as confirmatory evidence. Cross-drug claims require scripts/parp_paired_test.py and multiplicity correction."
+  },
+  "verdict": "quantum kernel above SVM-RBF (delta +0.0229, paired p=0.020, UNCORRECTED; folds share training data and this is one cohort among several screened. NOT a standalone result: run scripts/parp_paired_test.py for the cross-drug paired test with Holm correction before citing."
+}

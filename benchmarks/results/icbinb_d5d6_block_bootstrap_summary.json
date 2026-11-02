@@ -1,0 +1,99 @@
+{
+  "format": "icbinb_d5d6_formal_block_bootstrap.v1",
+  "input": "icbinb_d3_frozen_pi16_3seed_tuned_classical_per_drug.csv",
+  "unit": "drug-level mean AUC delta across 3 seeds",
+  "primary_jaccard_threshold": 0.8,
+  "sensitivity_thresholds": [
+    0.6,
+    0.8,
+    0.9
+  ],
+  "n_boot": 10000,
+  "results": [
+    {
+      "comparison": "qsvm_minus_tuned_svm_rbf",
+      "jaccard_threshold": 0.6,
+      "n_blocks": 1,
+      "component_sizes": "20",
+      "observed_median": -0.00993544267196685,
+      "ci95_low": -0.00993544267196685,
+      "ci95_high": -0.00993544267196685,
+      "bootstrap_se": 0.0,
+      "n_boot": 10000
+    },
+    {
+      "comparison": "qsvm_minus_tuned_svm_rbf",
+      "jaccard_threshold": 0.8,
+      "n_blocks": 2,
+      "component_sizes": "17;3",
+      "observed_median": -0.00993544267196685,
+      "ci95_low": -0.01490656076614453,
+      "ci95_high": -0.0067962595457351505,
+      "bootstrap_se": 0.0029211140976960577,
+      "n_boot": 10000
+    },
+    {
+      "comparison": "qsvm_minus_tuned_svm_rbf",
+      "jaccard_threshold": 0.9,
+      "n_blocks": 2,
+      "component_sizes": "17;3",
+      "observed_median": -0.00993544267196685,
+      "ci95_low": -0.01490656076614453,
+      "ci95_high": -0.0067962595457351505,
+      "bootstrap_se": 0.0029211140976960577,
+      "n_boot": 10000
+    },
+    {
+      "comparison": "qsvm_minus_tuned_gbdt",
+      "jaccard_threshold": 0.6,
+      "n_blocks": 1,
+      "component_sizes": "20",
+      "observed_median": 0.0003987291436974849,
+      "ci95_low": 0.0003987291436974849,
+      "ci95_high": 0.0003987291436974849,
+      "bootstrap_se": 0.0,
+      "n_boot": 10000
+    },
+    {
+      "comparison": "qsvm_minus_tuned_gbdt",
+      "jaccard_threshold": 0.8,
+      "n_blocks": 2,
+      "component_sizes": "17;3",
+      "observed_median": 0.0003987291436974849,
+      "ci95_low": -0.0031507992929070325,
+      "ci95_high": 0.0035548039059174474,
+      "bootstrap_se": 0.0023901331720372486,
+      "n_boot": 10000
+    },
+    {
+      "comparison": "qsvm_minus_tuned_gbdt",
+      "jaccard_threshold": 0.9,
+      "n_blocks": 2,
+      "component_sizes": "17;3",
+      "observed_median": 0.0003987291436974849,
+      "ci95_low": -0.0031507992929070325,
+      "ci95_high": 0.0035548039059174474,
+      "bootstrap_se": 0.0023901331720372486,
+      "n_boot": 10000
+    }
+  ],
+  "low_overlap_subset": [
+    {
+      "comparison": "qsvm_minus_tuned_svm_rbf",
+      "criterion": "pairwise J<0.5",
+      "subset": "5fluorouracil",
+      "subset_size": 1,
+      "median_delta": -0.006795607091815111,
+      "interpretation": "Non-inferential singleton: no pair of drugs meets J<0.5."
+    },
+    {
+      "comparison": "qsvm_minus_tuned_gbdt",
+      "criterion": "pairwise J<0.5",
+      "subset": "5fluorouracil",
+      "subset_size": 1,
+      "median_delta": 0.015626709096793274,
+      "interpretation": "Non-inferential singleton: no pair of drugs meets J<0.5."
+    }
+  ],
+  "limitations": "At J>=.6 all 20 drugs form one block; J>=.8/.9 gives only 17+3 blocks. J<.5 maximum subset size=1, so low-overlap analysis cannot be inferential. LODO/LOCO are robustness diagnostics."
+}

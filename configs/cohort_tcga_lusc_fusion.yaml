@@ -1,0 +1,40 @@
+# TCGA-LUSC CT + RNA on the 28 paired labelled cases.
+#
+# After the run, check selection.modality_selection_counts. The CPTAC-LUAD
+# fusion selected 50/50 genes and 0 imaging features — if that happens again,
+# this is not a fusion result.
+
+modalities:
+  - type: imaging_dicom
+    root: /mnt/d/nextcloud/data/medical-imaging/TCGA-LUSC/radiology/TCGA-LUSC
+    metadata_csv: /mnt/d/nextcloud/data/medical-imaging/TCGA-LUSC/radiology/TCGA-LUSC/metadata.csv
+    want_modality: CT
+    modality: imaging_ct
+    window: [40, 400]
+    mask_percentile: 60
+    zscore_volume: false
+    min_slices: 8
+
+  - type: transcriptomics
+    path: /home/author/work/agents/shared/qml_in_multiomics/data/tcga_lusc/rnaseq_tpm.csv
+    modality: transcriptomics
+    log1p: true
+    top_var_genes: 2000
+
+labels:
+  path: /home/author/work/agents/shared/qml_in_multiomics/data/tcga_lusc/labels_ct_rna_usable.csv
+  id_column: case_id
+  label_column: label
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi
+  select_k: 10
+  selector: gbdt

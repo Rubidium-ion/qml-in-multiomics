@@ -1,0 +1,29 @@
+# TCGA-BRCA MR + 450k Methylation Fusion on 104 paired cases
+modalities:
+  - type: matrix
+    path: /home/author/work/agents/shared/qml_in_multiomics/repo/data/tcga_brca/brca_mr_features.csv
+    id_column: case_id
+    modality: imaging_mr
+
+  - type: matrix
+    path: /home/author/work/agents/shared/qml_in_multiomics/repo/data/tcga_brca/brca_meth_top2k.csv
+    id_column: case_id
+    modality: methylation
+
+labels:
+  path: /home/author/work/agents/shared/qml_in_multiomics/repo/data/tcga_brca/labels_brca_mr_clean.csv
+  id_column: case_id
+  label_column: stage_binary
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi
+  select_k: 10
+  selector: gbdt

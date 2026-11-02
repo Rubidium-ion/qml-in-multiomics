@@ -1,0 +1,39 @@
+# config.yaml template for benchmark runs
+
+# ---- Dataset ----
+dataset:
+  name: "PROSTATEx"               # or "ADNI" / "IEDB" / "TCGA-LUAD"
+  target: "clinically_significant"  # target column / label mapping
+  split_seed: 42
+  test_ratio: 0.2
+  cv_folds: 5
+
+# ---- Algorithms ----
+algorithms:
+  - name: "qsvm_amplitude"           # must match algorithms/<name>/
+    enabled: true
+    params:
+      encoding: "amplitude"
+      backend: "qasm_simulator"
+      shots: 1024
+  - name: "svm_rbf"
+    enabled: true
+    params:
+      C: 1.0
+      gamma: "scale"
+  - name: "rf_baseline"
+    enabled: true
+    params:
+      n_estimators: 100
+
+# ---- Evaluation ----
+metrics:
+  - auc
+  - accuracy
+  - sensitivity
+  - specificity
+  - f1
+
+# ---- Output ----
+output_dir: "benchmarks/results/"
+run_id: "run_001"

@@ -1,0 +1,55 @@
+# CAMELYON17 — WSI lymph-node metastasis, MULTI-CENTRE
+#
+# Access: https://camelyon17.grand-challenge.org/  (registration; data on AWS/GC)
+# 1000 WSIs, 100 patients x 5 slides, from FIVE hospitals (centres 0-4).
+#
+# THE POINT OF THIS COHORT IS THE CENTRE CONFOUND, so this config runs
+# leave-one-centre-out by default. Stain colour and scanner response differ per
+# hospital and centre correlates with label prevalence, so a random split lets a
+# model score well by recognising the scanner — a number that is not a
+# metastasis detector. Measured on a synthetic group-confound fixture, random
+# splits inflated AUC by +0.10 to +0.17 over leave-one-group-out, worst for the
+# most flexible model.
+#
+# Check `group_audit.prevalence_spread` in the result JSON: near 0 means centre
+# and label are roughly independent and the control was not load-bearing.
+#
+# SECOND, INDEPENDENT LIMITATION — do not conflate it with the first.
+# This adapter computes SLIDE-LEVEL statistics. A micro-metastasis is a few
+# hundred pixels in a 100k x 200k slide and is invisible to whole-slide means.
+# Real CAMELYON17 performance needs tile-level MIL. Expect to lose to published
+# baselines. That is a feature-extraction ceiling, NOT a quantum-vs-classical
+# result, and must never be reported as the latter.
+
+modalities:
+  - type: pathology_wsi
+    root: ../data/camelyon17/slides
+    modality: pathology
+    level: -1                  # smallest pyramid level; never read level 0
+    max_pixels: 4.0e7
+    stain_normalize: macenko   # reduces (does not remove) the centre confound
+    min_tissue_frac: 0.01
+
+labels:
+  path: ../data/camelyon17/labels.csv    # slide_id,label,centre
+  id_column: slide_id
+  label_column: label
+  group_column: centre                   # 0-4, one hospital each
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  cv: leave_one_group_out    # train on 4 hospitals, test on the held-out one
+  n_splits: 5                # ignored under leave_one_group_out
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi         # sweep per cohort; never inherit from another paper
+  select_k: 10
+  selector: gbdt
+
+# A centre whose slides are all negative gives a fold with no defined AUC. The
+# runner records that as null with `auc_undefined_reason` and excludes it from
+# the mean rather than silently coercing it to 0.5 — check `folds_without_auc`.

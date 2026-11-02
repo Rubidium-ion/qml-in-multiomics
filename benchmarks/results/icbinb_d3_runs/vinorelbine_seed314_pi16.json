@@ -1,0 +1,169 @@
+{
+  "drug": "Vinorelbine",
+  "cohort": "data/gdsc_vinorelbine_quantile",
+  "n_samples": 950,
+  "quantum": true,
+  "kernel": "fidelity |<psi_i|psi_j>|^2, exact statevector, ZZFeatureMap(12q, reps=2, linear)",
+  "n_qubits": 12,
+  "reps": 2,
+  "entanglement": "linear",
+  "encoding_scale": 0.19634954084936207,
+  "kernel_offdiag_mean": 0.643355240388732,
+  "hilbert_dim": 4096,
+  "feature_selection": "GBDT importance, refit inside each training fold",
+  "folds": 5,
+  "seed": 314,
+  "wall_clock_sec": 54.0,
+  "genes_per_fold": [
+    [
+      "SHLD1",
+      "BLM",
+      "FANCL",
+      "RBBP8",
+      "NBN",
+      "TP53BP1",
+      "UBE2T",
+      "RAD18",
+      "FANCD2",
+      "FANCF",
+      "FANCE",
+      "RAD51"
+    ],
+    [
+      "SHLD1",
+      "ABRAXAS1",
+      "TP53BP1",
+      "FANCD2",
+      "BLM",
+      "WRN",
+      "FANCL",
+      "FANCE",
+      "MUS81",
+      "BRIP1",
+      "RAD18",
+      "RAD51AP1"
+    ],
+    [
+      "SHLD1",
+      "FANCL",
+      "BLM",
+      "ATM",
+      "PARP1",
+      "ABRAXAS1",
+      "FANCF",
+      "FANCE",
+      "SHLD3",
+      "TP53BP1",
+      "USP11",
+      "WRN"
+    ],
+    [
+      "SHLD1",
+      "BLM",
+      "ABRAXAS1",
+      "NBN",
+      "FANCL",
+      "FANCD2",
+      "WRN",
+      "TP53BP1",
+      "RAD51B",
+      "FANCE",
+      "ATM",
+      "BRCA2"
+    ],
+    [
+      "SHLD1",
+      "FANCL",
+      "WRN",
+      "ABRAXAS1",
+      "TP53BP1",
+      "FANCE",
+      "NBN",
+      "BLM",
+      "MUS81",
+      "FANCM",
+      "BRIP1",
+      "ATM"
+    ]
+  ],
+  "models": {
+    "QSVM": {
+      "auc": 0.7746454642899804,
+      "auc_sd": 0.04039681645744986,
+      "bal_acc": 0.6584484121661976,
+      "bal_acc_sd": 0.03869590451193215,
+      "quantum": true,
+      "auc_folds": [
+        0.799880970093736,
+        0.8308287457223628,
+        0.7164025821596245,
+        0.7818368544600939,
+        0.7442781690140844
+      ],
+      "bal_acc_folds": [
+        0.7270495461984824,
+        0.6668650498437733,
+        0.610768779342723,
+        0.642018779342723,
+        0.6455399061032864
+      ]
+    },
+    "SVM-RBF": {
+      "auc": 0.7579234258399676,
+      "auc_sd": 0.04039023699906161,
+      "bal_acc": 0.6793907209063038,
+      "bal_acc_sd": 0.03304524412481654,
+      "quantum": false,
+      "auc_folds": [
+        0.7863413182562119,
+        0.8034518672816545,
+        0.696156103286385,
+        0.778169014084507,
+        0.7254988262910799
+      ],
+      "bal_acc_folds": [
+        0.7306948370778158,
+        0.6917869364677875,
+        0.6383509389671361,
+        0.6489143192488263,
+        0.687206572769953
+      ]
+    },
+    "GBDT": {
+      "auc": 0.7430471848099958,
+      "auc_sd": 0.05283691400859195,
+      "bal_acc": 0.6751974095976943,
+      "bal_acc_sd": 0.050966927340662174,
+      "quantum": false,
+      "auc_folds": [
+        0.8143133462282399,
+        0.7861925308733819,
+        0.6819248826291079,
+        0.7469190140845071,
+        0.6858861502347418
+      ],
+      "bal_acc_folds": [
+        0.7701978872191638,
+        0.67430441898527,
+        0.645099765258216,
+        0.6656396713615024,
+        0.6207453051643192
+      ]
+    }
+  },
+  "quantum_advantage_vs_rbf": 0.016722038450012744,
+  "paired_test": {
+    "test": "paired two-sided t-test on per-fold AUC difference (QSVM - SVM-RBF)",
+    "n_folds": 5,
+    "mean_diff": 0.016722038450012654,
+    "sd_diff": 0.00881361827392076,
+    "t": 4.242481752044358,
+    "p": 0.013237279943936036,
+    "ci95": [
+      0.0057784859453744244,
+      0.027665590954650883
+    ],
+    "note": "Folds share training data, so this is not independent-sample inference; treat it as a descriptive effect size with spread, not as confirmatory evidence. Cross-drug claims require scripts/parp_paired_test.py and multiplicity correction."
+  },
+  "verdict": "quantum kernel above SVM-RBF (delta +0.0167, paired p=0.013, UNCORRECTED; folds share training data and this is one cohort among several screened. NOT a standalone result: run scripts/parp_paired_test.py for the cross-drug paired test with Holm correction before citing."
+}

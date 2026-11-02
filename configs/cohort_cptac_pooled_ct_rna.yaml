@@ -1,0 +1,82 @@
+# CPTAC pooled CT + CPTAC-3 transcriptomics — the real cross-modal cohort.
+#
+# WHY POOLED: CPTAC-LUAD alone has only 37 cases with BOTH CT and expression.
+# At 5-fold CV that is ~7 test samples per fold, which cannot support a
+# fusion-vs-single-modality comparison. Pooling six collections gives 268 paired
+# cases (measured 2026-09-03 against TCIA + GDC APIs, not estimated):
+#
+#   CPTAC-PDA    71   CPTAC-UCEC   69   CPTAC-CCRCC  64
+#   CPTAC-LUAD   37   CPTAC-LSCC   22   CPTAC-AML     5
+#
+# POOLING BUYS SAMPLE SIZE AND INTRODUCES A CONFOUND, so this config uses
+# leave-one-collection-out CV by default. Tumour type is now a variable:
+# pancreatic, endometrial and renal CT differ in anatomy, contrast protocol and
+# slice thickness, and a random split lets the model score well by classifying
+# ORGAN rather than answering the clinical question.
+#
+# Measured on a synthetic fixture with a deliberate group confound
+# (4 groups, prevalence spread 0.45): random-split AUC was inflated by
+# +0.10 to +0.17 over leave-one-group-out, and GBDT — the most flexible model —
+# was inflated the most (0.695 -> 0.522). The more capacity a model has, the
+# more group identity it absorbs.
+#
+# `group_audit.prevalence_spread` in the result JSON tells you whether the
+# control was needed: near 0 means group and label are roughly independent.
+#
+# STAGING (see scripts/fetch_cptac.py):
+#   python scripts/fetch_cptac.py match   --collection CPTAC-PDA --project CPTAC-3
+#   python scripts/fetch_cptac.py imaging --collection CPTAC-PDA --modality CT \
+#       --out ../data/cptac_pooled
+#   # repeat per collection, open each .tcia with NBIA Data Retriever
+#   python scripts/fetch_cptac.py omics   --project CPTAC-3 --out ../data/cptac_pooled
+#   gdc-client download -m ../data/cptac_pooled/gdc_manifest.txt -d ../data/cptac_pooled/rnaseq
+#
+# Paired case list already computed: ../data/cptac_pooled/paired_cases_ct.json
+
+modalities:
+  - type: imaging_dicom
+    root: ../data/cptac_pooled/ct          # one subdir per CPTAC case id
+    modality: imaging_ct
+    window: [40, 400]                      # soft tissue; HU is calibrated
+    mask_percentile: 60                    # crude body mask, drops air/table
+    zscore_volume: false                   # do NOT z-score CT — that discards HU
+
+  - type: transcriptomics
+    path: ../data/cptac_pooled/rnaseq_tpm.csv   # rows keyed by CPTAC case id
+    modality: transcriptomics
+    log1p: true
+    top_var_genes: 2000
+
+labels:
+  path: ../data/cptac_pooled/labels.csv    # case_id,label,cohort
+  id_column: case_id
+  label_column: label
+  group_column: cohort                     # CPTAC-PDA / -UCEC / -CCRCC / ...
+
+integration:
+  max_missing: 0.2
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  cv: leave_one_group_out    # one fold per collection; the honest question is
+                             # "does this generalise to an unseen tumour type?"
+  n_splits: 5                # ignored under leave_one_group_out
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi     # sweep per cohort; the synthetic run showed the optimum
+                         # is a dataset property, not a constant to inherit
+  select_k: 12
+  selector: gbdt
+
+# CPTAC-AML has only 5 paired cases. Under leave-one-collection-out its fold has
+# 5 test samples and its AUC is close to meaningless — check `per_group` in the
+# results and consider dropping it from the labels table rather than letting a
+# 5-sample fold drag the mean.
+#
+# After the first run, check `selection.modality_selection_counts`. If all 12
+# selected features come from one modality, the "multi-modal" claim is not
+# supported by what the model actually used — report that, do not bury it.

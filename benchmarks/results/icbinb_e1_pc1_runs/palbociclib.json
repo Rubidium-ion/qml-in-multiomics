@@ -1,0 +1,24 @@
+{
+  "drug": "palbociclib",
+  "n": 962,
+  "pc1_auc": 0.7786657044682497,
+  "pc1_auc_seed_sd": 0.002533224153499771,
+  "pc1_explained_variance_train": 0.1376587301492691,
+  "pc1_test_projection_variance": 682.1910461425781,
+  "pc1_response_spearman_train": 0.3075960296902343,
+  "rank_gaussian_pc1_auc": 0.7868380168558482,
+  "random_orthogonal_auc": 0.5641046314758342,
+  "pc1_perm_null_values": [
+    0.0023999973200261593,
+    0.0024099901784211397,
+    0.0024199949111789465
+  ],
+  "pc1_perm_null_95": 0.002418994437903166,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

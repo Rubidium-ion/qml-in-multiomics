@@ -1,0 +1,24 @@
+{
+  "drug": "paclitaxel",
+  "n": 952,
+  "pc1_auc": 0.7010289497403672,
+  "pc1_auc_seed_sd": 0.0012711144678257428,
+  "pc1_explained_variance_train": 0.13790843387444815,
+  "pc1_test_projection_variance": 687.9278889973957,
+  "pc1_response_spearman_train": 0.22601364028263812,
+  "rank_gaussian_pc1_auc": 0.6827882569267046,
+  "random_orthogonal_auc": 0.5488576304410137,
+  "pc1_perm_null_values": [
+    0.0024089671205729246,
+    0.0024181678891181946,
+    0.0024265784304589033
+  ],
+  "pc1_perm_null_95": 0.0024257373763248323,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

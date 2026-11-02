@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "path": "submission/icbinb_2026/main.tex",
+      "identity_pattern_hits": 6,
+      "note": "Manual review required: broad author/GitHub patterns are intentionally conservative."
+    },
+    {
+      "path": "submission/icbinb_2026/statements.tex",
+      "identity_pattern_hits": 2,
+      "note": "Manual review required: broad author/GitHub patterns are intentionally conservative."
+    }
+  ],
+  "status": "manual anonymization review required before any external upload"
+}

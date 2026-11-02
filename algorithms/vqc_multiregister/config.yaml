@@ -1,0 +1,34 @@
+name: vqc_multiregister
+version: 0.2.0
+framework: qiskit
+quantum: true
+description: >
+  VQC over [Shape, Texture, Transcriptomics] registers. Register dims,
+  angle scales and column spans are all parameterised. Per-register PCA is
+  fitted inside train() only. See docs/encoding_decision_v1.md.
+
+params:
+  # --- encoding (chosen empirically, see docs/encoding_decision_v1.md) ---
+  encoder: ry          # ry | h_rz | zz | ry_zz ; h_rz/zz degenerate under Z readout
+  coupling: ring       # none | ring | full
+  coupler: cry         # cry transports info; crz is diagonal and cannot
+  reps: 1
+
+  # --- register layout: edit n_qubits freely, this is the knob authors asked for ---
+  registers:
+    - {name: shape,           n_qubits: 3, angle_scale: 1.5707963267948966}
+    - {name: texture,         n_qubits: 4, angle_scale: 1.5707963267948966}
+    - {name: transcriptomics, n_qubits: 4, angle_scale: 0.7853981633974483}
+
+  # --- column spans of each modality in the concatenated X ---
+  # fill in once authors' paired matrix lands; omit to treat X as one block
+  # blocks:
+  #   shape:           [0, 14]
+  #   texture:         [14, 102]
+  #   transcriptomics: [102, 20633]
+
+  # --- variational part ---
+  reps_ansatz: 2
+  optimizer: cobyla
+  maxiter: 300
+  seed: 42

@@ -1,0 +1,24 @@
+{
+  "drug": "niraparib",
+  "n": 889,
+  "pc1_auc": 0.8144079481078697,
+  "pc1_auc_seed_sd": 0.0002530426742817703,
+  "pc1_explained_variance_train": 0.14195977648099264,
+  "pc1_test_projection_variance": 705.9848999023437,
+  "pc1_response_spearman_train": 0.34879578168608144,
+  "rank_gaussian_pc1_auc": 0.7365588439665421,
+  "random_orthogonal_auc": 0.6079009694445673,
+  "pc1_perm_null_values": [
+    0.0025522583164274693,
+    0.0025406719651073217,
+    0.0025377501733601093
+  ],
+  "pc1_perm_null_95": 0.0025510996812954543,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

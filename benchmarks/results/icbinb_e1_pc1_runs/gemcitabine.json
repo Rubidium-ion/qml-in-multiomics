@@ -1,0 +1,24 @@
+{
+  "drug": "gemcitabine",
+  "n": 954,
+  "pc1_auc": 0.7116027294218782,
+  "pc1_auc_seed_sd": 0.003196020076644876,
+  "pc1_explained_variance_train": 0.13812763492266336,
+  "pc1_test_projection_variance": 687.786297607422,
+  "pc1_response_spearman_train": 0.27353895215466023,
+  "rank_gaussian_pc1_auc": 0.696946758914844,
+  "random_orthogonal_auc": 0.5886692208500719,
+  "pc1_perm_null_values": [
+    0.0024251374416053295,
+    0.002421037293970585,
+    0.0024193869903683662
+  ],
+  "pc1_perm_null_95": 0.002424727426841855,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

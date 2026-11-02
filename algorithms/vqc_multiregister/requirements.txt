@@ -1,0 +1,5 @@
+qiskit>=2.0
+qiskit-machine-learning>=0.9
+qiskit-algorithms>=0.3
+scikit-learn>=1.5
+numpy>=1.26

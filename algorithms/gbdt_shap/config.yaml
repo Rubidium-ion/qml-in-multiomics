@@ -1,0 +1,16 @@
+name: gbdt_shap
+version: 0.1.0
+framework: sklearn
+quantum: false
+description: >
+  Gradient-boosted trees baseline for the feature-interaction comparison
+  requested by bio via authors (2026-08-08). GBDT builds interactions explicitly
+  through sequential splits, making it the fair classical counterpart to a
+  quantum kernel's implicit interaction capture.
+params:
+  n_estimators: 300
+  learning_rate: 0.05
+  max_depth: 3
+  subsample: 0.8
+  top_k: 300          # variance pre-filter inside train() to keep SHAP tractable
+  seed: 42

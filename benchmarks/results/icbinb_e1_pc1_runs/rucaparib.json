@@ -1,0 +1,24 @@
+{
+  "drug": "rucaparib",
+  "n": 942,
+  "pc1_auc": 0.8244285334595304,
+  "pc1_auc_seed_sd": 0.0006594793844148962,
+  "pc1_explained_variance_train": 0.13610506554444632,
+  "pc1_test_projection_variance": 679.9773559570312,
+  "pc1_response_spearman_train": 0.4227209132061181,
+  "rank_gaussian_pc1_auc": 0.7441194532350112,
+  "random_orthogonal_auc": 0.578288067522888,
+  "pc1_perm_null_values": [
+    0.0024472633376717567,
+    0.0024325924459844828,
+    0.002450400497764349
+  ],
+  "pc1_perm_null_95": 0.0024500867817550897,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

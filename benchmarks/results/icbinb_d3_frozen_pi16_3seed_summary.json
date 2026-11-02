@@ -1,0 +1,180 @@
+{
+  "format": "icbinb_revision_d3_frozen_pi16_3seed_summary.v1",
+  "selection_manifest": "benchmarks/results/icbinb_d3_frozen_selection_20drug.json",
+  "selection_sha256": "7218058bd735a539d687a8e399ba0a4722dc1d20e65c0901eb83b3aa70357504",
+  "selection_manifest_precedes_quantum_runs": true,
+  "n_drugs": 20,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "outer_cv": "StratifiedKFold(n_splits=5, shuffle=True, random_state=seed), shared within each drug/seed across QK and controls",
+  "quantum": "exact statevector ZZFeatureMap(12 qubits, reps=2, linear)",
+  "fixed_encoding_scale": 0.19634954084936207,
+  "feature_selection": "GBDT importance refit on each outer training fold",
+  "classical_controls": "SVM-RBF and GBDT on identically selected/scaled outer-fold features; controls use fixed default hyperparameters (no inner-CV tuning in this execution).",
+  "unit_of_cross_drug_inference": "drug-level mean across the 3 seeds; folds quantify within-drug spread and are not treated as independent drugs.",
+  "per_drug_csv": "benchmarks/results/icbinb_d3_frozen_pi16_3seed_per_drug.csv",
+  "analyses": {
+    "qsvm_minus_svm_rbf": {
+      "metric": "AUC (already normalized to [0,1])",
+      "comparison": "delta_qsvm_minus_rbf_auc",
+      "n_drugs": 20,
+      "median_delta": -0.004591775240167647,
+      "mean_delta": -0.0021156408420110184,
+      "n_favouring_qsvm": 9,
+      "range": [
+        -0.019895898602446487,
+        0.014162323016489712
+      ],
+      "wilcoxon_two_sided": {
+        "statistic": 82.0,
+        "p": 0.40909767150878906
+      },
+      "wilcoxon_margin_0_05_alternative_median_less": {
+        "statistic": 0.0,
+        "p": 9.5367431640625e-07,
+        "interpretation": "small p supports median delta < +0.05; this is not evidence of quantum advantage."
+      },
+      "signflip_permutation": {
+        "statistic": "mean drug-level delta AUC",
+        "observed": -0.0021156408420110184,
+        "n_permutations": 100000,
+        "p_two_sided": 0.32736672633273667,
+        "null_q025": -0.00413486937922503,
+        "null_q975": 0.004117630921593777
+      },
+      "effect_interval": {
+        "n_boot": 10000,
+        "median_ci95": [
+          -0.007683399449578336,
+          0.004069734075439239
+        ],
+        "hodges_lehmann": -0.0021037821886544057,
+        "hodges_lehmann_bootstrap_ci95": [
+          -0.0068730173985417555,
+          0.0020720073449756048
+        ]
+      },
+      "cluster_aware_bootstrap": {
+        "n_blocks": 2,
+        "observed_median": -0.004591775240167647,
+        "ci95": [
+          -0.005132457037732056,
+          0.004164521690812976
+        ],
+        "n_boot": 10000,
+        "blocks": [
+          [
+            "5fluorouracil",
+            "bortezomib",
+            "camptothecin",
+            "docetaxel",
+            "gemcitabine",
+            "irinotecan",
+            "methotrexate",
+            "niraparib",
+            "olaparib",
+            "oxaliplatin",
+            "paclitaxel",
+            "palbociclib",
+            "rucaparib",
+            "talazoparib",
+            "temozolomide",
+            "veliparib",
+            "vinorelbine"
+          ],
+          [
+            "cisplatin",
+            "cytarabine",
+            "vinblastine"
+          ]
+        ],
+        "note": "Resamples J>=0.8 overlap components, not drugs independently."
+      }
+    },
+    "qsvm_minus_gbdt": {
+      "metric": "AUC (already normalized to [0,1])",
+      "comparison": "delta_qsvm_minus_gbdt_auc",
+      "n_drugs": 20,
+      "median_delta": 0.015532483357944956,
+      "mean_delta": 0.013872242053516698,
+      "n_favouring_qsvm": 18,
+      "range": [
+        -0.005010723635236654,
+        0.02930104551726172
+      ],
+      "wilcoxon_two_sided": {
+        "statistic": 5.0,
+        "p": 1.9073486328125e-05
+      },
+      "wilcoxon_margin_0_05_alternative_median_less": {
+        "statistic": 0.0,
+        "p": 9.5367431640625e-07,
+        "interpretation": "small p supports median delta < +0.05; this is not evidence of quantum advantage."
+      },
+      "signflip_permutation": {
+        "statistic": "mean drug-level delta AUC",
+        "observed": 0.013872242053516698,
+        "n_permutations": 100000,
+        "p_two_sided": 1.999980000199998e-05,
+        "null_q025": -0.00714728212191265,
+        "null_q975": 0.007193717765895176
+      },
+      "effect_interval": {
+        "n_boot": 10000,
+        "median_ci95": [
+          0.009859209927585377,
+          0.01924291157429997
+        ],
+        "hodges_lehmann": 0.01447094250704577,
+        "hodges_lehmann_bootstrap_ci95": [
+          0.009705295353499918,
+          0.018002902566850748
+        ]
+      },
+      "cluster_aware_bootstrap": {
+        "n_blocks": 2,
+        "observed_median": 0.015532483357944956,
+        "ci95": [
+          0.014493356952742084,
+          0.015741535176242143
+        ],
+        "n_boot": 10000,
+        "blocks": [
+          [
+            "5fluorouracil",
+            "bortezomib",
+            "camptothecin",
+            "docetaxel",
+            "gemcitabine",
+            "irinotecan",
+            "methotrexate",
+            "niraparib",
+            "olaparib",
+            "oxaliplatin",
+            "paclitaxel",
+            "palbociclib",
+            "rucaparib",
+            "talazoparib",
+            "temozolomide",
+            "veliparib",
+            "vinorelbine"
+          ],
+          [
+            "cisplatin",
+            "cytarabine",
+            "vinblastine"
+          ]
+        ],
+        "note": "Resamples J>=0.8 overlap components, not drugs independently."
+      }
+    }
+  },
+  "limitations": [
+    "Primary D3 design called for fold-local inner-CV for classical hyperparameters. This completed run uses fixed classical defaults; it is a matched fixed-baseline benchmark, not a fully inner-tuned classical comparison.",
+    "At J>=0.8 the D5/D6 overlap graph has only two components (17+3); cluster bootstrap is necessarily coarse and must be interpreted with the overlap analysis."
+  ],
+  "sha256": "98ff370e348f2871a96d830104c48c045ea9a6aae53f136e4f0bea0b5f6278d2"
+}

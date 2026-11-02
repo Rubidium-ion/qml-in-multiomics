@@ -1,0 +1,24 @@
+{
+  "drug": "cisplatin",
+  "n": 757,
+  "pc1_auc": 0.8177560420224603,
+  "pc1_auc_seed_sd": 0.0018590115287942094,
+  "pc1_explained_variance_train": 0.13494785130023956,
+  "pc1_test_projection_variance": 669.7133748372395,
+  "pc1_response_spearman_train": 0.4784023165891334,
+  "rank_gaussian_pc1_auc": 0.7499606413954464,
+  "random_orthogonal_auc": 0.5695984060446101,
+  "pc1_perm_null_values": [
+    0.002877128077670932,
+    0.002894479315727949,
+    0.002882057800889015
+  ],
+  "pc1_perm_null_95": 0.0028932371642440557,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

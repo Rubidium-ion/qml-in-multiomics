@@ -1,0 +1,27 @@
+# CPTAC-LUAD RNA-only control for the imaging fusion smoke.
+# Same 36 labelled cases as cohort_cptac_luad_ct.yaml.
+
+modalities:
+  - type: transcriptomics
+    path: /home/author/work/agents/shared/qml_in_multiomics/data/cptac_luad/rnaseq_tpm.csv
+    modality: transcriptomics
+    log1p: true
+    top_var_genes: 2000
+
+labels:
+  path: /home/author/work/agents/shared/qml_in_multiomics/data/cptac_luad/labels_usable.csv
+  id_column: case_id
+  label_column: label
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi
+  select_k: 10
+  selector: gbdt

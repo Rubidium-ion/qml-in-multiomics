@@ -1,0 +1,169 @@
+{
+  "drug": "Bortezomib",
+  "cohort": "data/gdsc_bortezomib_quantile",
+  "n_samples": 951,
+  "quantum": true,
+  "kernel": "fidelity |<psi_i|psi_j>|^2, exact statevector, ZZFeatureMap(12q, reps=2, linear)",
+  "n_qubits": 12,
+  "reps": 2,
+  "entanglement": "linear",
+  "encoding_scale": 0.19634954084936207,
+  "kernel_offdiag_mean": 0.6441975067936927,
+  "hilbert_dim": 4096,
+  "feature_selection": "GBDT importance, refit inside each training fold",
+  "folds": 5,
+  "seed": 314,
+  "wall_clock_sec": 54.7,
+  "genes_per_fold": [
+    [
+      "SHLD1",
+      "PARP2",
+      "RAD51",
+      "FANCC",
+      "POLQ",
+      "H2AX",
+      "MDC1",
+      "FANCE",
+      "BRCA1",
+      "BABAM1",
+      "RAD51B",
+      "RECQL4"
+    ],
+    [
+      "SHLD1",
+      "RAD51B",
+      "RPA2",
+      "PARP2",
+      "FANCE",
+      "BABAM1",
+      "FANCC",
+      "RAD51",
+      "NBN",
+      "SHLD3",
+      "RECQL4",
+      "FANCD2"
+    ],
+    [
+      "SHLD1",
+      "FANCC",
+      "BABAM1",
+      "RAD51",
+      "PARP2",
+      "FANCD2",
+      "H2AX",
+      "RAD51D",
+      "FANCE",
+      "RBBP8",
+      "NBN",
+      "MDC1"
+    ],
+    [
+      "SHLD1",
+      "BABAM1",
+      "FANCD2",
+      "PARP2",
+      "ATM",
+      "FANCE",
+      "BRCA1",
+      "FANCC",
+      "RAD51B",
+      "MUS81",
+      "RPA1",
+      "XRCC5"
+    ],
+    [
+      "PARP2",
+      "SHLD1",
+      "BABAM1",
+      "FANCE",
+      "H2AX",
+      "FANCD2",
+      "RPA2",
+      "NBN",
+      "SHLD3",
+      "BLM",
+      "FANCC",
+      "BRCA1"
+    ]
+  ],
+  "models": {
+    "QSVM": {
+      "auc": 0.669024623613326,
+      "auc_sd": 0.0581202449203976,
+      "bal_acc": 0.5254588658769059,
+      "bal_acc_sd": 0.021716906383911633,
+      "quantum": true,
+      "auc_folds": [
+        0.6688519813519813,
+        0.7076327927391757,
+        0.6235679214402619,
+        0.590962441314554,
+        0.7541079812206574
+      ],
+      "bal_acc_folds": [
+        0.5,
+        0.5496949858651986,
+        0.546496057134355,
+        0.5311032863849765,
+        0.5
+      ]
+    },
+    "SVM-RBF": {
+      "auc": 0.7118950142605373,
+      "auc_sd": 0.053803222502448525,
+      "bal_acc": 0.5972642462172729,
+      "bal_acc_sd": 0.04390799518460594,
+      "quantum": false,
+      "auc_folds": [
+        0.7065850815850816,
+        0.737241481922333,
+        0.6448445171849426,
+        0.6713615023474178,
+        0.7994424882629108
+      ],
+      "bal_acc_folds": [
+        0.6247814685314685,
+        0.6173188513614045,
+        0.5537866388930218,
+        0.5378521126760563,
+        0.6525821596244131
+      ]
+    },
+    "GBDT": {
+      "auc": 0.6749771317983785,
+      "auc_sd": 0.05312627197934007,
+      "bal_acc": 0.5895982251690972,
+      "bal_acc_sd": 0.053531934197995984,
+      "quantum": false,
+      "auc_folds": [
+        0.639423076923077,
+        0.7545008183306057,
+        0.6130040172593364,
+        0.6484741784037559,
+        0.7194835680751174
+      ],
+      "bal_acc_folds": [
+        0.5932400932400932,
+        0.6600208302335961,
+        0.5398006249070079,
+        0.520099765258216,
+        0.6348298122065728
+      ]
+    }
+  },
+  "quantum_advantage_vs_rbf": -0.04287039064721121,
+  "paired_test": {
+    "test": "paired two-sided t-test on per-fold AUC difference (QSVM - SVM-RBF)",
+    "n_folds": 5,
+    "mean_diff": -0.0428703906472111,
+    "sd_diff": 0.022820108606974386,
+    "t": -4.200729688019001,
+    "p": 0.013687774089728556,
+    "ci95": [
+      -0.0712052979395911,
+      -0.0145354833548311
+    ],
+    "note": "Folds share training data, so this is not independent-sample inference; treat it as a descriptive effect size with spread, not as confirmatory evidence. Cross-drug claims require scripts/parp_paired_test.py and multiplicity correction."
+  },
+  "verdict": "quantum kernel below SVM-RBF (delta -0.0429, paired p=0.014, UNCORRECTED; folds share training data and this is one cohort among several screened. NOT a standalone result: run scripts/parp_paired_test.py for the cross-drug paired test with Holm correction before citing."
+}

@@ -1,0 +1,24 @@
+{
+  "drug": "5fluorouracil",
+  "n": 962,
+  "pc1_auc": 0.6980056320101475,
+  "pc1_auc_seed_sd": 0.0012267978503984244,
+  "pc1_explained_variance_train": 0.1376995394627253,
+  "pc1_test_projection_variance": 686.0276692708334,
+  "pc1_response_spearman_train": 0.2186948606340874,
+  "rank_gaussian_pc1_auc": 0.7238455017224004,
+  "random_orthogonal_auc": 0.5418970417828689,
+  "pc1_perm_null_values": [
+    0.002402348443865776,
+    0.0024112232495099306,
+    0.0024163592606782913
+  ],
+  "pc1_perm_null_95": 0.002415845659561455,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

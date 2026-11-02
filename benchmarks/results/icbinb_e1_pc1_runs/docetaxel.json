@@ -1,0 +1,24 @@
+{
+  "drug": "docetaxel",
+  "n": 962,
+  "pc1_auc": 0.6358344084760341,
+  "pc1_auc_seed_sd": 0.0011918690798053456,
+  "pc1_explained_variance_train": 0.13769079248110452,
+  "pc1_test_projection_variance": 687.3177897135416,
+  "pc1_response_spearman_train": 0.2032859921111875,
+  "rank_gaussian_pc1_auc": 0.6352429469552828,
+  "random_orthogonal_auc": 0.535504706192822,
+  "pc1_perm_null_values": [
+    0.002396345604211092,
+    0.002421511569991708,
+    0.0024198887404054403
+  ],
+  "pc1_perm_null_95": 0.002421349287033081,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

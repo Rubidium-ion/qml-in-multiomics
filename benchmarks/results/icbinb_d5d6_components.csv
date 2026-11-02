@@ -1,0 +1,6 @@
+threshold,component_id,size,drugs
+0.6,1,20,5fluorouracil;bortezomib;camptothecin;cisplatin;cytarabine;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinblastine;vinorelbine
+0.8,1,17,5fluorouracil;bortezomib;camptothecin;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinorelbine
+0.8,2,3,cisplatin;cytarabine;vinblastine
+0.9,1,17,5fluorouracil;bortezomib;camptothecin;docetaxel;gemcitabine;irinotecan;methotrexate;niraparib;olaparib;oxaliplatin;paclitaxel;palbociclib;rucaparib;talazoparib;temozolomide;veliparib;vinorelbine
+0.9,2,3,cisplatin;cytarabine;vinblastine

@@ -1,0 +1,169 @@
+{
+  "drug": "Methotrexate",
+  "cohort": "data/gdsc_methotrexate_quantile",
+  "n_samples": 875,
+  "quantum": true,
+  "kernel": "fidelity |<psi_i|psi_j>|^2, exact statevector, ZZFeatureMap(12q, reps=2, linear)",
+  "n_qubits": 12,
+  "reps": 2,
+  "entanglement": "linear",
+  "encoding_scale": 0.19634954084936207,
+  "kernel_offdiag_mean": 0.6353590303677236,
+  "hilbert_dim": 4096,
+  "feature_selection": "GBDT importance, refit inside each training fold",
+  "folds": 5,
+  "seed": 42,
+  "wall_clock_sec": 52.0,
+  "genes_per_fold": [
+    [
+      "POLQ",
+      "WRN",
+      "RAD51B",
+      "RPA2",
+      "SHLD1",
+      "ABRAXAS1",
+      "NBN",
+      "RAD52",
+      "FANCE",
+      "ATRX",
+      "FANCL",
+      "RAD51"
+    ],
+    [
+      "WRN",
+      "RAD51B",
+      "FANCC",
+      "PARP1",
+      "RIF1",
+      "RAD51",
+      "FANCI",
+      "NBN",
+      "CHEK1",
+      "RPA3",
+      "BARD1",
+      "RPA2"
+    ],
+    [
+      "WRN",
+      "RAD51B",
+      "RPA2",
+      "SHLD1",
+      "ABRAXAS1",
+      "FANCE",
+      "PARP1",
+      "RAD51",
+      "LIG4",
+      "BRCA2",
+      "TP53BP1",
+      "FANCM"
+    ],
+    [
+      "RAD51B",
+      "POLQ",
+      "NBN",
+      "WRN",
+      "BLM",
+      "RIF1",
+      "FANCE",
+      "PARP1",
+      "MAD2L2",
+      "RAD52",
+      "RPA2",
+      "FANCL"
+    ],
+    [
+      "WRN",
+      "RAD51B",
+      "SHLD1",
+      "SHLD2",
+      "FANCL",
+      "RAD51",
+      "RPA2",
+      "RAD51D",
+      "XRCC6",
+      "RIF1",
+      "NBN",
+      "MAD2L2"
+    ]
+  ],
+  "models": {
+    "QSVM": {
+      "auc": 0.6349248745218921,
+      "auc_sd": 0.05204299032743844,
+      "bal_acc": 0.5160981822485462,
+      "bal_acc_sd": 0.016128448812992184,
+      "quantum": true,
+      "auc_folds": [
+        0.6538054968287527,
+        0.6606523247744622,
+        0.6023594725884802,
+        0.7043719639139486,
+        0.5534351145038168
+      ],
+      "bal_acc_folds": [
+        0.539200140944327,
+        0.5,
+        0.5262838306731437,
+        0.4961832061068702,
+        0.51882373351839
+      ]
+    },
+    "SVM-RBF": {
+      "auc": 0.6545207085949142,
+      "auc_sd": 0.05302615346415197,
+      "bal_acc": 0.5593510105493064,
+      "bal_acc_sd": 0.02394309867878106,
+      "quantum": false,
+      "auc_folds": [
+        0.650986610288936,
+        0.6786953504510757,
+        0.5985426786953505,
+        0.7418459403192228,
+        0.6025329632199862
+      ],
+      "bal_acc_folds": [
+        0.5510923185341791,
+        0.5491845940319222,
+        0.6020124913254684,
+        0.5642782789729355,
+        0.5301873698820263
+      ]
+    },
+    "GBDT": {
+      "auc": 0.6281346663869298,
+      "auc_sd": 0.07298293135626571,
+      "bal_acc": 0.5861270704560247,
+      "bal_acc_sd": 0.04655305895835589,
+      "quantum": false,
+      "auc_folds": [
+        0.6061486962649753,
+        0.6151977793199168,
+        0.6030534351145038,
+        0.7666551006245663,
+        0.5496183206106869
+      ],
+      "bal_acc_folds": [
+        0.6100246652572234,
+        0.5678348369188063,
+        0.5904753643303262,
+        0.6513705759888966,
+        0.5109299097848716
+      ]
+    }
+  },
+  "quantum_advantage_vs_rbf": -0.019595834073022123,
+  "paired_test": {
+    "test": "paired two-sided t-test on per-fold AUC difference (QSVM - SVM-RBF)",
+    "n_folds": 5,
+    "mean_diff": -0.019595834073022123,
+    "sd_diff": 0.023680049111043624,
+    "t": -1.8504022883402256,
+    "p": 0.13792517384167755,
+    "ci95": [
+      -0.048998498529902096,
+      0.009806830383857847
+    ],
+    "note": "Folds share training data, so this is not independent-sample inference; treat it as a descriptive effect size with spread, not as confirmatory evidence. Cross-drug claims require scripts/parp_paired_test.py and multiplicity correction."
+  },
+  "verdict": "no detectable separation from SVM-RBF (delta -0.0196, paired p=0.138)"
+}

@@ -1,0 +1,208 @@
+{
+  "format": "icbinb_d3_tuned_classical_outer_nested_cv.v1",
+  "drug": "talazoparib",
+  "n_samples": 950,
+  "seed": 2718,
+  "outer_cv": {
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 2718
+  },
+  "inner_cv": {
+    "n_splits": 3,
+    "shuffle": true,
+    "random_state": "seed*100+outer_fold",
+    "scoring": "roc_auc"
+  },
+  "scale": 0.19634954084936207,
+  "n_qubits_features": 12,
+  "feature_selection": "GBDT importance fitted on outer training fold only; identical outer selection protocol to completed QK runs",
+  "qk_reused": "benchmarks/results/icbinb_d3_runs/talazoparib_seed2718_pi16.json",
+  "qk_auc_folds": [
+    0.7690819818479393,
+    0.7582205029013539,
+    0.6352699530516432,
+    0.744131455399061,
+    0.7281396713615024
+  ],
+  "outer_features": [
+    [
+      "PARP1",
+      "SHLD1",
+      "BLM",
+      "FANCE",
+      "RAD50",
+      "MUS81",
+      "SLX4",
+      "WRN",
+      "NBN",
+      "POLQ",
+      "SHLD2",
+      "MAD2L2"
+    ],
+    [
+      "SHLD1",
+      "PARP1",
+      "RPA2",
+      "LIG4",
+      "LIG3",
+      "MAD2L2",
+      "MUS81",
+      "RIF1",
+      "RPA3",
+      "FANCE",
+      "XRCC5",
+      "RECQL4"
+    ],
+    [
+      "SHLD1",
+      "BLM",
+      "LIG4",
+      "PARP1",
+      "MAD2L2",
+      "FANCE",
+      "RECQL4",
+      "UIMC1",
+      "RIF1",
+      "SLX4",
+      "RPA2",
+      "RAD50"
+    ],
+    [
+      "BLM",
+      "SHLD1",
+      "PARP1",
+      "LIG4",
+      "RAD50",
+      "WRN",
+      "USP11",
+      "FANCF",
+      "MAD2L2",
+      "RAD51",
+      "PALB2",
+      "FANCE"
+    ],
+    [
+      "SHLD1",
+      "PARP1",
+      "RAD51",
+      "WRN",
+      "LIG4",
+      "FANCE",
+      "RAD54L",
+      "USP11",
+      "POLQ",
+      "RPA2",
+      "SHLD2",
+      "SLX4"
+    ]
+  ],
+  "models": {
+    "SVM-RBF": {
+      "auc": 0.7495115993037029,
+      "auc_sd": 0.03519378317513153,
+      "bal_acc": 0.534801368843922,
+      "bal_acc_sd": 0.06960273768784404,
+      "auc_folds": [
+        0.7669989584883201,
+        0.7841095075137627,
+        0.6891138497652582,
+        0.7312206572769953,
+        0.7761150234741784
+      ],
+      "bal_acc_folds": [
+        0.5,
+        0.6740068442196101,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "selected_params": [
+        {
+          "C": 10.0,
+          "gamma": 0.1
+        },
+        {
+          "C": 1.0,
+          "gamma": "scale"
+        },
+        {
+          "C": 1.0,
+          "gamma": 0.01
+        },
+        {
+          "C": 10.0,
+          "gamma": 0.001
+        },
+        {
+          "C": 10.0,
+          "gamma": 0.1
+        }
+      ],
+      "inner_best_auc": [
+        0.7711650364336768,
+        0.7683087928153718,
+        0.783151455026455,
+        0.7784443748259537,
+        0.7702689884433305
+      ]
+    },
+    "GBDT": {
+      "auc": 0.728749594851258,
+      "auc_sd": 0.019837289707331084,
+      "bal_acc": 0.6179856222840191,
+      "bal_acc_sd": 0.04816544177439664,
+      "auc_folds": [
+        0.7318851361404553,
+        0.7606011010266329,
+        0.6982100938967136,
+        0.727112676056338,
+        0.7259389671361502
+      ],
+      "bal_acc_folds": [
+        0.681446213361107,
+        0.6706591281059366,
+        0.5893485915492958,
+        0.565580985915493,
+        0.5828931924882629
+      ],
+      "selected_params": [
+        {
+          "learning_rate": 0.1,
+          "max_depth": 3,
+          "n_estimators": 100
+        },
+        {
+          "learning_rate": 0.03,
+          "max_depth": 4,
+          "n_estimators": 200
+        },
+        {
+          "learning_rate": 0.03,
+          "max_depth": 3,
+          "n_estimators": 100
+        },
+        {
+          "learning_rate": 0.03,
+          "max_depth": 3,
+          "n_estimators": 100
+        },
+        {
+          "learning_rate": 0.03,
+          "max_depth": 2,
+          "n_estimators": 200
+        }
+      ],
+      "inner_best_auc": [
+        0.7741763262322472,
+        0.7790676053559826,
+        0.7741367307156781,
+        0.7657263819270398,
+        0.7750767978975217
+      ]
+    }
+  },
+  "wall_clock_sec": 33.57,
+  "qsvm_minus_svm_rbf_auc": -0.022542886391402894,
+  "qsvm_minus_gbdt_auc": -0.0017808819389579789
+}

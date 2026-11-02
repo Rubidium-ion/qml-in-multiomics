@@ -1,0 +1,169 @@
+{
+  "drug": "Olaparib",
+  "cohort": "data/gdsc_olaparib_quantile",
+  "n_samples": 961,
+  "quantum": true,
+  "kernel": "fidelity |<psi_i|psi_j>|^2, exact statevector, ZZFeatureMap(12q, reps=2, linear)",
+  "n_qubits": 12,
+  "reps": 2,
+  "entanglement": "linear",
+  "encoding_scale": 0.19634954084936207,
+  "kernel_offdiag_mean": 0.6239230958742212,
+  "hilbert_dim": 4096,
+  "feature_selection": "GBDT importance, refit inside each training fold",
+  "folds": 5,
+  "seed": 2718,
+  "wall_clock_sec": 56.9,
+  "genes_per_fold": [
+    [
+      "BLM",
+      "WRN",
+      "SHLD1",
+      "ABRAXAS1",
+      "PARP1",
+      "RIF1",
+      "FANCF",
+      "LIG4",
+      "USP11",
+      "RBBP8",
+      "MAD2L2",
+      "NBN"
+    ],
+    [
+      "PARP1",
+      "BLM",
+      "ABRAXAS1",
+      "SHLD1",
+      "WRN",
+      "UIMC1",
+      "PARP3",
+      "PALB2",
+      "SLX4",
+      "RIF1",
+      "NBN",
+      "MAD2L2"
+    ],
+    [
+      "PARP1",
+      "WRN",
+      "BLM",
+      "SHLD1",
+      "ABRAXAS1",
+      "FANCE",
+      "XRCC1",
+      "LIG4",
+      "RIF1",
+      "MAD2L2",
+      "FANCC",
+      "RPA2"
+    ],
+    [
+      "BLM",
+      "PARP1",
+      "SHLD1",
+      "ABRAXAS1",
+      "WRN",
+      "FANCE",
+      "LIG4",
+      "MAD2L2",
+      "RPA2",
+      "UIMC1",
+      "PARP3",
+      "EME1"
+    ],
+    [
+      "WRN",
+      "SHLD1",
+      "BLM",
+      "PARP1",
+      "ABRAXAS1",
+      "FANCE",
+      "MAD2L2",
+      "MDC1",
+      "PARP3",
+      "RPA2",
+      "ATRX",
+      "MUS81"
+    ]
+  ],
+  "models": {
+    "QSVM": {
+      "auc": 0.8302319538926681,
+      "auc_sd": 0.022065881380853577,
+      "bal_acc": 0.6976332199546486,
+      "bal_acc_sd": 0.02072502388581963,
+      "quantum": true,
+      "auc_folds": [
+        0.8484977324263039,
+        0.8126446759259259,
+        0.7980324074074074,
+        0.8573495370370371,
+        0.8346354166666667
+      ],
+      "bal_acc_folds": [
+        0.696499433106576,
+        0.6805555555555556,
+        0.7326388888888888,
+        0.704861111111111,
+        0.6736111111111112
+      ]
+    },
+    "SVM-RBF": {
+      "auc": 0.8293591742252456,
+      "auc_sd": 0.018411487465443337,
+      "bal_acc": 0.7170351473922902,
+      "bal_acc_sd": 0.027983433655371773,
+      "quantum": false,
+      "auc_folds": [
+        0.828798185941043,
+        0.8242187500000001,
+        0.7989004629629629,
+        0.8540219907407408,
+        0.8408564814814814
+      ],
+      "bal_acc_folds": [
+        0.7032312925170068,
+        0.6909722222222222,
+        0.7708333333333333,
+        0.7152777777777778,
+        0.7048611111111112
+      ]
+    },
+    "GBDT": {
+      "auc": 0.8021010487528345,
+      "auc_sd": 0.021391080879744485,
+      "bal_acc": 0.7037556689342404,
+      "bal_acc_sd": 0.02921734830069942,
+      "quantum": false,
+      "auc_folds": [
+        0.8082482993197279,
+        0.7692418981481483,
+        0.7983217592592593,
+        0.8359374999999999,
+        0.7987557870370371
+      ],
+      "bal_acc_folds": [
+        0.6993339002267573,
+        0.6493055555555556,
+        0.71875,
+        0.71875,
+        0.7326388888888888
+      ]
+    }
+  },
+  "quantum_advantage_vs_rbf": 0.0008727796674224964,
+  "paired_test": {
+    "test": "paired two-sided t-test on per-fold AUC difference (QSVM - SVM-RBF)",
+    "n_folds": 5,
+    "mean_diff": 0.0008727796674225629,
+    "sd_diff": 0.011924243507340712,
+    "t": 0.16366611974462644,
+    "p": 0.8779306370438362,
+    "ci95": [
+      -0.01393312420145741,
+      0.015678683536302536
+    ],
+    "note": "Folds share training data, so this is not independent-sample inference; treat it as a descriptive effect size with spread, not as confirmatory evidence. Cross-drug claims require scripts/parp_paired_test.py and multiplicity correction."
+  },
+  "verdict": "no detectable separation from SVM-RBF (delta +0.0009, paired p=0.878)"
+}

@@ -1,0 +1,169 @@
+{
+  "drug": "Irinotecan",
+  "cohort": "data/gdsc_irinotecan_quantile",
+  "n_samples": 959,
+  "quantum": true,
+  "kernel": "fidelity |<psi_i|psi_j>|^2, exact statevector, ZZFeatureMap(12q, reps=2, linear)",
+  "n_qubits": 12,
+  "reps": 2,
+  "entanglement": "linear",
+  "encoding_scale": 0.19634954084936207,
+  "kernel_offdiag_mean": 0.6223657346488255,
+  "hilbert_dim": 4096,
+  "feature_selection": "GBDT importance, refit inside each training fold",
+  "folds": 5,
+  "seed": 2718,
+  "wall_clock_sec": 54.7,
+  "genes_per_fold": [
+    [
+      "SHLD1",
+      "ABRAXAS1",
+      "MAD2L2",
+      "FANCF",
+      "POLQ",
+      "FANCC",
+      "PALB2",
+      "WRN",
+      "ATM",
+      "PARP1",
+      "XRCC2",
+      "RPA2"
+    ],
+    [
+      "SHLD1",
+      "LIG4",
+      "ATM",
+      "PARP1",
+      "USP11",
+      "FANCF",
+      "ABRAXAS1",
+      "FANCE",
+      "MAD2L2",
+      "RIF1",
+      "BLM",
+      "WRN"
+    ],
+    [
+      "SHLD1",
+      "PARP1",
+      "LIG4",
+      "ABRAXAS1",
+      "SLX4",
+      "POLQ",
+      "WRN",
+      "RAD51D",
+      "PALB2",
+      "MAD2L2",
+      "FANCE",
+      "USP11"
+    ],
+    [
+      "SHLD1",
+      "ABRAXAS1",
+      "ATM",
+      "PALB2",
+      "RIF1",
+      "POLQ",
+      "LIG3",
+      "GEN1",
+      "UIMC1",
+      "BRCA1",
+      "MUS81",
+      "FANCE"
+    ],
+    [
+      "SHLD1",
+      "RIF1",
+      "FANCE",
+      "PALB2",
+      "WRN",
+      "POLQ",
+      "ABRAXAS1",
+      "LIG4",
+      "MAD2L2",
+      "FANCF",
+      "ATM",
+      "GEN1"
+    ]
+  ],
+  "models": {
+    "QSVM": {
+      "auc": 0.7479366987179488,
+      "auc_sd": 0.007418141309491371,
+      "bal_acc": 0.6388451825951826,
+      "bal_acc_sd": 0.028336234186166962,
+      "quantum": true,
+      "auc_folds": [
+        0.7411747685185186,
+        0.7611400462962963,
+        0.7427662037037036,
+        0.7510127314814815,
+        0.7435897435897435
+      ],
+      "bal_acc_folds": [
+        0.6388888888888888,
+        0.6006944444444444,
+        0.673611111111111,
+        0.6145833333333334,
+        0.6664481351981352
+      ]
+    },
+    "SVM-RBF": {
+      "auc": 0.7646863264050764,
+      "auc_sd": 0.01724017332345632,
+      "bal_acc": 0.6576000388500388,
+      "bal_acc_sd": 0.02961757577360387,
+      "quantum": false,
+      "auc_folds": [
+        0.7864583333333333,
+        0.7515914351851852,
+        0.7811053240740741,
+        0.763454861111111,
+        0.7408216783216783
+      ],
+      "bal_acc_folds": [
+        0.642361111111111,
+        0.6145833333333333,
+        0.6770833333333333,
+        0.6527777777777778,
+        0.7011946386946387
+      ]
+    },
+    "GBDT": {
+      "auc": 0.7594083867521366,
+      "auc_sd": 0.032329382471657855,
+      "bal_acc": 0.6749320124320125,
+      "bal_acc_sd": 0.02483158725531873,
+      "quantum": false,
+      "auc_folds": [
+        0.7554976851851852,
+        0.7782118055555555,
+        0.7683738425925926,
+        0.7000868055555556,
+        0.7948717948717949
+      ],
+      "bal_acc_folds": [
+        0.6979166666666667,
+        0.6319444444444444,
+        0.6701388888888888,
+        0.6736111111111112,
+        0.701048951048951
+      ]
+    }
+  },
+  "quantum_advantage_vs_rbf": -0.01674962768712762,
+  "paired_test": {
+    "test": "paired two-sided t-test on per-fold AUC difference (QSVM - SVM-RBF)",
+    "n_folds": 5,
+    "mean_diff": -0.016749627687127688,
+    "sd_diff": 0.024348429128099366,
+    "t": -1.5382226881736287,
+    "p": 0.19881904773864817,
+    "ci95": [
+      -0.046982195548304594,
+      0.013482940174049218
+    ],
+    "note": "Folds share training data, so this is not independent-sample inference; treat it as a descriptive effect size with spread, not as confirmatory evidence. Cross-drug claims require scripts/parp_paired_test.py and multiplicity correction."
+  },
+  "verdict": "no detectable separation from SVM-RBF (delta -0.0167, paired p=0.199)"
+}

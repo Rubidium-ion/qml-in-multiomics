@@ -1,0 +1,49 @@
+# CPTAC (TCIA) — CT radiomics + proteogenomics
+#
+# Access: TCIA public, requires the NBIA Data Retriever for bulk DICOM.
+#   https://www.cancerimagingarchive.net/collection/cptac-luad/   (also -LSCC, -PDA, -HNSCC, -CCRCC)
+# Clinical/proteomic tables: https://proteomics.cancer.gov/data-portal
+#
+# CPTAC is the strongest of the four cohorts for this project because the SAME
+# patients have imaging AND proteogenomics — real cross-modal fusion, not two
+# unrelated datasets glued together. Match on the CPTAC case id (e.g. C3L-00001).
+#
+# Set `root` to a directory holding one subdirectory per case, each containing
+# that case's CT slices. Windowing is soft-tissue by default; change it if the
+# question is lung parenchyma (-600/1500) or bone (400/1800).
+
+modalities:
+  - type: imaging_dicom
+    root: ../data/cptac_luad/ct              # one subdir per case id
+    modality: imaging_ct
+    window: [40, 400]                        # soft tissue (center, width)
+    mask_percentile: 60                      # crude body mask; drops air/table
+    zscore_volume: false                     # HU is already calibrated — keep it
+
+  # Uncomment once the proteogenomic table is downloaded and keyed by case id.
+  # - type: transcriptomics
+  #   path: ../data/cptac_luad/rnaseq_tpm.csv
+  #   modality: transcriptomics
+  #   log1p: true
+  #   top_var_genes: 2000
+
+labels:
+  path: ../data/cptac_luad/labels.csv        # case_id,label
+  id_column: case_id
+  label_column: label
+
+integration:
+  max_missing: 0.2
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi        # DO NOT inherit this; sweep it per cohort
+  select_k: 10
+  selector: gbdt

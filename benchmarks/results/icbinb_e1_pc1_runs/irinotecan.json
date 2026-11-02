@@ -1,0 +1,24 @@
+{
+  "drug": "irinotecan",
+  "n": 959,
+  "pc1_auc": 0.7835892309850644,
+  "pc1_auc_seed_sd": 0.0006009081075933464,
+  "pc1_explained_variance_train": 0.13807966311772665,
+  "pc1_test_projection_variance": 689.5202270507813,
+  "pc1_response_spearman_train": 0.36771821513147157,
+  "rank_gaussian_pc1_auc": 0.7196749816541482,
+  "random_orthogonal_auc": 0.6113927738927739,
+  "pc1_perm_null_values": [
+    0.002403273480013013,
+    0.002432258566841483,
+    0.0023984271101653576
+  ],
+  "pc1_perm_null_95": 0.002429360058158636,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

@@ -1,0 +1,44 @@
+# Synthetic cross-modal experiment — known ground truth.
+#
+# Purpose: the GDSC work could never answer "was there anything to find?".
+# Here interaction structure is set by construction, and the informative
+# features are deliberately split ACROSS modalities, so any single-modality
+# model is provably capped and fusion has something real to gain.
+#
+# noise is set from a measured oracle check, not guessed: at noise=0.8 a GBDT
+# given the TRUE informative columns only reached AUC 0.61, so a null result
+# would have been uninterpretable. At noise=0.3 the oracle reaches 0.77, which
+# leaves headroom for a method to win or lose on merit.
+
+synthetic:
+  n_samples: 400
+  blocks:
+    transcriptomics: 40
+    genomics: 24
+    metabolomics: 16
+  main_effect_frac: 0.3
+  interaction_frac: 0.7      # interaction-dominated by construction
+  cross_modal: true
+  n_informative: 9
+  n_interaction_pairs: 3     # concentrated: many random-sign pairs cancel out
+  noise: 0.3
+  class_balance: 0.4
+  seed: 42
+
+integration:
+  max_missing: 0.2
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity:
+      C: 1.0
+      entanglement: linear
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi/16      # tuned; sweep with `python -m qmlmo sweep`
+  select_k: 10               # refit inside every training fold
+  selector: gbdt

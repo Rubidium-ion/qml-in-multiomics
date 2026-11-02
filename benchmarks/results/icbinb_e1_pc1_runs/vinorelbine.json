@@ -1,0 +1,24 @@
+{
+  "drug": "vinorelbine",
+  "n": 950,
+  "pc1_auc": 0.7558159291096809,
+  "pc1_auc_seed_sd": 0.00019409220765019886,
+  "pc1_explained_variance_train": 0.13879637916882834,
+  "pc1_test_projection_variance": 692.6849975585938,
+  "pc1_response_spearman_train": 0.33373234286691056,
+  "rank_gaussian_pc1_auc": 0.7448306891556816,
+  "random_orthogonal_auc": 0.5538642065406374,
+  "pc1_perm_null_values": [
+    0.0024363629054278135,
+    0.0024144055787473917,
+    0.0024231199640780687
+  ],
+  "pc1_perm_null_95": 0.002435038611292839,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

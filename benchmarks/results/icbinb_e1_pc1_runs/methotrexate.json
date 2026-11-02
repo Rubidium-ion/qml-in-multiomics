@@ -1,0 +1,24 @@
+{
+  "drug": "methotrexate",
+  "n": 875,
+  "pc1_auc": 0.7052589627860355,
+  "pc1_auc_seed_sd": 0.0015518954275931343,
+  "pc1_explained_variance_train": 0.12669972578684488,
+  "pc1_test_projection_variance": 628.5101094563802,
+  "pc1_response_spearman_train": -0.024476524384757958,
+  "rank_gaussian_pc1_auc": 0.6990252247308879,
+  "random_orthogonal_auc": 0.5860453460577728,
+  "pc1_perm_null_values": [
+    0.0025753085501492023,
+    0.002579354215413332,
+    0.0025772713124752045
+  ],
+  "pc1_perm_null_95": 0.0025791459251195193,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

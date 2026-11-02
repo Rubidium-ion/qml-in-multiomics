@@ -1,0 +1,27 @@
+% ICBINB-BIO 2026 — Statements (LLM disclosure + ethics + reproducibility)
+% These do not count toward the 8-page limit. Included at end of main.tex.
+
+\section*{LLM Usage Disclosure}
+This work was developed with the assistance of large language models (LLMs) as writing and
+analysis tools. LLMs were used to assist with drafting and editing portions of the manuscript
+text and with generating portions of the reproducibility documentation. All scientific claims,
+numerical results, statistical analyses, figure generation, and conclusions were produced and
+verified by the authors through committed scripts and data artifacts; LLM-assisted output was
+reviewed, corrected, and validated by the authors. No LLM was used to generate or fabricate
+experimental results.
+
+\section*{Ethics Statement}
+This study uses publicly available, de-identified datasets: the GDSC2 cell-line drug-response
+panel and public TCGA-BRCA data. No human subjects, clinical trials, or protected health
+information were involved, and cell-line analyses are not subject to human-subjects review. All
+quantum results are exact statevector simulations; no quantum hardware was used. The work reports
+a negative methodological result intended to improve reporting standards in quantum machine
+learning for biology; it informs no clinical decisions.
+
+\section*{Reproducibility Statement}
+All experiments were run from committed scripts in the accompanying repository. Every figure is
+generated from committed JSON result artifacts via the scripts referenced in the Reproduction
+section; numeric claims in Methods and Results carry provenance to committed scripts. Quantum
+results are exact statevector simulations (Qiskit, 12 qubits, ZZFeatureMap fidelity kernel);
+there is no QPU execution and no stochastic shot noise, so results are deterministic given the
+seed. Reproduction commands are listed in the Reproduction section of the paper.

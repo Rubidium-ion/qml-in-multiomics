@@ -1,0 +1,10 @@
+name: qsvm_angle
+version: 0.1.0
+framework: pennylane
+quantum: true
+description: Quantum-kernel SVM with ZZ angle-encoding feature map (classical-RBF fallback)
+params:
+  n_qubits: 8
+  reps: 2
+  C: 1.0
+  backend: pennylane   # set to classical_fallback to force RBF baseline

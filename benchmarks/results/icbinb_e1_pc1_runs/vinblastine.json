@@ -1,0 +1,24 @@
+{
+  "drug": "vinblastine",
+  "n": 738,
+  "pc1_auc": 0.7934825242933351,
+  "pc1_auc_seed_sd": 0.0012795929883042455,
+  "pc1_explained_variance_train": 0.13602905968825021,
+  "pc1_test_projection_variance": 676.2290242513021,
+  "pc1_response_spearman_train": 0.4405954527272389,
+  "rank_gaussian_pc1_auc": 0.7591240380429571,
+  "random_orthogonal_auc": 0.5836010949524463,
+  "pc1_perm_null_values": [
+    0.0029173423536121845,
+    0.0029308681841939688,
+    0.002937395591288805
+  ],
+  "pc1_perm_null_95": 0.0029367428505793214,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

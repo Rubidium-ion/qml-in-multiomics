@@ -1,0 +1,1017 @@
+{
+  "format": "icbinb_d1_if_bootstrap_ci.v1",
+  "created": "2026-10-02 21:47:19 +0800",
+  "task": "D1 Test 1: cell-line bootstrap 95% CI on interaction fraction (full-pipeline re-run each replicate: 5-fold fold-local feature selection + GBDT + SHAP TreeExplainer)",
+  "n_bootstrap_replicates": 200,
+  "n_drugs": 22,
+  "boot_seed_base": 20261002,
+  "resampling": "cell lines resampled with replacement, n = cohort size; each replicate reruns full pipeline (not final-IF resampling)",
+  "conventions": {
+    "full": "sum|offdiag| (each symmetric pair counted twice; the pre-specified convention under which the 0.40 gate was calibrated)",
+    "half": "0.5*sum|offdiag| (each pair once)"
+  },
+  "ci_method": "empirical 2.5/97.5 percentiles (ECDF)",
+  "pipeline": {
+    "feature_selection": "top-120 variance on fold train + 68-gene DDR/HR whitelist (protected)",
+    "gbdt": "GradientBoostingClassifier(300, lr=0.05, depth=3, subsample=0.8, seed=42)",
+    "shap": "shap 0.52.0 TreeExplainer.shap_interaction_values (exact)",
+    "cv": "5-fold stratified, shuffle, seed=42",
+    "if_per_replicate": "mean of per-fold IF over the 5 folds"
+  },
+  "gate_threshold": 0.4,
+  "note": "0.40 is the original pre-specified threshold; it is NOT reinterpreted as a data-derived optimum. CI is on the bootstrap distribution of per-replicate full-pipeline IFs.",
+  "cohorts": [
+    {
+      "drug": "5fluorouracil",
+      "n_cell_lines": 962,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.46083530983750504,
+      "point_estimate_if_half": 0.2994061082500879,
+      "bootstrap_mean_if_full": 0.443313957429347,
+      "bootstrap_ci95_if_full": [
+        0.42772817235408117,
+        0.4582819736502199
+      ],
+      "bootstrap_mean_if_half": 0.28484222866081055,
+      "bootstrap_ci95_if_half": [
+        0.2720602358500777,
+        0.2972740693185884
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7662967173938542,
+      "bootstrap_mean_classical_auc": 0.9159715972377965,
+      "bootstrap_ci95_classical_auc": [
+        0.8878565632132958,
+        0.940856267295068
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7943.0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.443313957429347,
+        "sd": 0.00822727597673322,
+        "median": 0.442581131054283,
+        "p05": 0.4298122708505044,
+        "p95": 0.4573961230258223
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.28484222866081055,
+        "sd": 0.0067932517059931755,
+        "median": 0.28419945543331315,
+        "p05": 0.2737484718442014,
+        "p95": 0.29651996450556645
+      }
+    },
+    {
+      "drug": "bleomycin",
+      "n_cell_lines": 715,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4727536068036195,
+      "point_estimate_if_half": 0.30954638944289237,
+      "bootstrap_mean_if_full": 0.4582193622120459,
+      "bootstrap_ci95_if_full": [
+        0.43576979614707834,
+        0.476700503431543
+      ],
+      "bootstrap_mean_if_half": 0.29730075596716615,
+      "bootstrap_ci95_if_half": [
+        0.27859036581214164,
+        0.3129987971975796
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.6334199673638926,
+      "bootstrap_mean_classical_auc": 0.8971957418760954,
+      "bootstrap_ci95_classical_auc": [
+        0.8603062091741338,
+        0.9288565281127346
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 5848.2,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4582193622120459,
+        "sd": 0.011032616471125002,
+        "median": 0.4594942989964346,
+        "p05": 0.4383272034491595,
+        "p95": 0.4735181859761035
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.29730075596716615,
+        "sd": 0.009250863452027202,
+        "median": 0.29831299733357197,
+        "p05": 0.28070537218525193,
+        "p95": 0.3102443711509951
+      }
+    },
+    {
+      "drug": "bortezomib",
+      "n_cell_lines": 951,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.474602668653256,
+      "point_estimate_if_half": 0.3111338002894226,
+      "bootstrap_mean_if_full": 0.4556478594941825,
+      "bootstrap_ci95_if_full": [
+        0.4382885403239062,
+        0.47245597389642413
+      ],
+      "bootstrap_mean_if_half": 0.29511481920721294,
+      "bootstrap_ci95_if_half": [
+        0.28067594232840115,
+        0.30933216276810827
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7225749865707164,
+      "bootstrap_mean_classical_auc": 0.9120353761554036,
+      "bootstrap_ci95_classical_auc": [
+        0.8831893179421738,
+        0.932876799795542
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7906.6,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4556478594941825,
+        "sd": 0.009104355966471548,
+        "median": 0.4557662211923519,
+        "p05": 0.44066429291925097,
+        "p95": 0.4696647770678476
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.29511481920721294,
+        "sd": 0.007625080025047741,
+        "median": 0.29517765549069586,
+        "p05": 0.28266323302563545,
+        "p95": 0.3069180969325183
+      }
+    },
+    {
+      "drug": "camptothecin",
+      "n_cell_lines": 962,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45686527191997484,
+      "point_estimate_if_half": 0.29606311335395097,
+      "bootstrap_mean_if_full": 0.4336767622924072,
+      "bootstrap_ci95_if_full": [
+        0.4138289187085919,
+        0.45308711793724454
+      ],
+      "bootstrap_mean_if_half": 0.276954409204645,
+      "bootstrap_ci95_if_half": [
+        0.26094305226047987,
+        0.29290919980287927
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8133755725949383,
+      "bootstrap_mean_classical_auc": 0.9290729004365701,
+      "bootstrap_ci95_classical_auc": [
+        0.9057227594897485,
+        0.9499544951644822
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7938.5,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4336767622924072,
+        "sd": 0.009745067391157899,
+        "median": 0.43385157256700324,
+        "p05": 0.41698229363644745,
+        "p95": 0.4505699073934271
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.276954409204645,
+        "sd": 0.007933024302975298,
+        "median": 0.2770590548013149,
+        "p05": 0.2634189450474142,
+        "p95": 0.2908084051774588
+      }
+    },
+    {
+      "drug": "cisplatin",
+      "n_cell_lines": 757,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4416252110473584,
+      "point_estimate_if_half": 0.2833883185085197,
+      "bootstrap_mean_if_full": 0.43347855015239034,
+      "bootstrap_ci95_if_full": [
+        0.41399385983409304,
+        0.4525052261171429
+      ],
+      "bootstrap_mean_if_half": 0.27680263142991246,
+      "bootstrap_ci95_if_half": [
+        0.26105670060945285,
+        0.29244603019527227
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8085442763872887,
+      "bootstrap_mean_classical_auc": 0.9360510880148325,
+      "bootstrap_ci95_classical_auc": [
+        0.9132682111325289,
+        0.9578683550844339
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6193.7,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.43347855015239034,
+        "sd": 0.010138484869089748,
+        "median": 0.4333710971682966,
+        "p05": 0.41796821525037053,
+        "p95": 0.45021538815215534
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.27680263142991246,
+        "sd": 0.008246538527670834,
+        "median": 0.2766536435898185,
+        "p05": 0.2642196402389243,
+        "p95": 0.2905125908018651
+      }
+    },
+    {
+      "drug": "cytarabine",
+      "n_cell_lines": 740,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4318840373592392,
+      "point_estimate_if_half": 0.2754158797235453,
+      "bootstrap_mean_if_full": 0.42405889707106814,
+      "bootstrap_ci95_if_full": [
+        0.4068711859396012,
+        0.4424594115783937
+      ],
+      "bootstrap_mean_if_half": 0.2691682434398762,
+      "bootstrap_ci95_if_half": [
+        0.25543260311145216,
+        0.28414270432768857
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7964937910883857,
+      "bootstrap_mean_classical_auc": 0.9271374448059189,
+      "bootstrap_ci95_classical_auc": [
+        0.8950828255606919,
+        0.9512120061252123
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6032.3,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.42405889707106814,
+        "sd": 0.009238744934061585,
+        "median": 0.4244237131770032,
+        "p05": 0.4084461960692692,
+        "p95": 0.43884630828552657
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2691682434398762,
+        "sd": 0.007437962349111323,
+        "median": 0.26943264244540666,
+        "p05": 0.25667531377744385,
+        "p95": 0.28112033403642656
+      }
+    },
+    {
+      "drug": "docetaxel",
+      "n_cell_lines": 962,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4730835674463431,
+      "point_estimate_if_half": 0.30982937727321797,
+      "bootstrap_mean_if_full": 0.4574128301686342,
+      "bootstrap_ci95_if_full": [
+        0.4423636441610112,
+        0.46950559350136023
+      ],
+      "bootstrap_mean_if_half": 0.29657692470219776,
+      "bootstrap_ci95_if_half": [
+        0.2840507368974071,
+        0.3067806255933009
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7457565754750176,
+      "bootstrap_mean_classical_auc": 0.9200655444305003,
+      "bootstrap_ci95_classical_auc": [
+        0.8968933738788649,
+        0.9430843929359294
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7964.8,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4574128301686342,
+        "sd": 0.007271774878335461,
+        "median": 0.45782000387233424,
+        "p05": 0.44492906710632546,
+        "p95": 0.4686540380717348
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.29657692470219776,
+        "sd": 0.006096644569102417,
+        "median": 0.29691176452139534,
+        "p05": 0.28613250684422237,
+        "p95": 0.30606055052455167
+      }
+    },
+    {
+      "drug": "gemcitabine",
+      "n_cell_lines": 954,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45066456103152736,
+      "point_estimate_if_half": 0.2908760425254159,
+      "bootstrap_mean_if_full": 0.4418484506953627,
+      "bootstrap_ci95_if_full": [
+        0.4221513363364584,
+        0.45901689685039243
+      ],
+      "bootstrap_mean_if_half": 0.2836554667984877,
+      "bootstrap_ci95_if_half": [
+        0.2675734532601553,
+        0.29787851349425915
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7523248028567177,
+      "bootstrap_mean_classical_auc": 0.9137209923180035,
+      "bootstrap_ci95_classical_auc": [
+        0.8825145371062646,
+        0.936205248059428
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7836.1,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4418484506953627,
+        "sd": 0.009947353205650593,
+        "median": 0.4420154031790864,
+        "p05": 0.42609343059166516,
+        "p95": 0.45713139624009075
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2836554667984877,
+        "sd": 0.008186601899349723,
+        "median": 0.2837437069363913,
+        "p05": 0.27074093597499943,
+        "p95": 0.2963179751261008
+      }
+    },
+    {
+      "drug": "irinotecan",
+      "n_cell_lines": 959,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45008487423136523,
+      "point_estimate_if_half": 0.29039323944152035,
+      "bootstrap_mean_if_full": 0.42851997349965404,
+      "bootstrap_ci95_if_full": [
+        0.40849418299371065,
+        0.4475622207431266
+      ],
+      "bootstrap_mean_if_half": 0.2727617064829974,
+      "bootstrap_ci95_if_half": [
+        0.2567009424455517,
+        0.2883095472882781
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8032919337606838,
+      "bootstrap_mean_classical_auc": 0.9307172372103761,
+      "bootstrap_ci95_classical_auc": [
+        0.9080824789569619,
+        0.952507342298079
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7870.2,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.42851997349965404,
+        "sd": 0.009419523084682692,
+        "median": 0.4285966780112079,
+        "p05": 0.4137051850976366,
+        "p95": 0.4452580977087002
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2727617064829974,
+        "sd": 0.0076268591298526405,
+        "median": 0.2727916324578862,
+        "p05": 0.2608247350561643,
+        "p95": 0.2864150261666125
+      }
+    },
+    {
+      "drug": "methotrexate",
+      "n_cell_lines": 875,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4827969421031298,
+      "point_estimate_if_half": 0.3182151127301163,
+      "bootstrap_mean_if_full": 0.4620005510949342,
+      "bootstrap_ci95_if_full": [
+        0.4423117966909073,
+        0.47943456975868953
+      ],
+      "bootstrap_mean_if_half": 0.3004639277996642,
+      "bootstrap_ci95_if_half": [
+        0.284046296022653,
+        0.3153332628339208
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7130000699342083,
+      "bootstrap_mean_classical_auc": 0.9085192681763438,
+      "bootstrap_ci95_classical_auc": [
+        0.8773706569511913,
+        0.9333706812591385
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7204.3,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4620005510949342,
+        "sd": 0.009015362993957433,
+        "median": 0.462820273427342,
+        "p05": 0.44548884824568924,
+        "p95": 0.47628705559843426
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.3004639277996642,
+        "sd": 0.007608176353950464,
+        "median": 0.30110668098343574,
+        "p05": 0.2865835259827344,
+        "p95": 0.3125944314588336
+      }
+    },
+    {
+      "drug": "niraparib",
+      "n_cell_lines": 889,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.43589088937674086,
+      "point_estimate_if_half": 0.2786831726867501,
+      "bootstrap_mean_if_full": 0.4244303265703855,
+      "bootstrap_ci95_if_full": [
+        0.4042448364619064,
+        0.44411133932732666
+      ],
+      "bootstrap_mean_if_half": 0.26946329807334674,
+      "bootstrap_ci95_if_half": [
+        0.2533373157589994,
+        0.2854522349674134
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8534877616927892,
+      "bootstrap_mean_classical_auc": 0.9495941946274165,
+      "bootstrap_ci95_classical_auc": [
+        0.9256823848516994,
+        0.9666135005716212
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7301.6,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4244303265703855,
+        "sd": 0.009996790721285382,
+        "median": 0.42471118189157175,
+        "p05": 0.4078190229847142,
+        "p95": 0.4403445330829535
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.26946329807334674,
+        "sd": 0.008049551802184618,
+        "median": 0.26964575133620844,
+        "p05": 0.25618549147631375,
+        "p95": 0.28234838841026344
+      }
+    },
+    {
+      "drug": "olaparib",
+      "n_cell_lines": 961,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4265159518653404,
+      "point_estimate_if_half": 0.2710646811901069,
+      "bootstrap_mean_if_full": 0.4195826949190558,
+      "bootstrap_ci95_if_full": [
+        0.403232365437928,
+        0.4341681415704084
+      ],
+      "bootstrap_mean_if_half": 0.2655500171454137,
+      "bootstrap_ci95_if_half": [
+        0.2525937043716754,
+        0.277314598334047
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8601249527588815,
+      "bootstrap_mean_classical_auc": 0.9470906254709885,
+      "bootstrap_ci95_classical_auc": [
+        0.9269048077928844,
+        0.9627690560594069
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7910.3,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4195826949190558,
+        "sd": 0.008150151254757963,
+        "median": 0.4198577699535677,
+        "p05": 0.40547900186167785,
+        "p95": 0.4319893813366357
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2655500171454137,
+        "sd": 0.00651503327502733,
+        "median": 0.2657171833963996,
+        "p05": 0.25431965708031307,
+        "p95": 0.2755200957019912
+      }
+    },
+    {
+      "drug": "oxaliplatin",
+      "n_cell_lines": 961,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.42293109223865905,
+      "point_estimate_if_half": 0.268175404484394,
+      "bootstrap_mean_if_full": 0.41615984373178966,
+      "bootstrap_ci95_if_full": [
+        0.39433093463552976,
+        0.43755109759372374
+      ],
+      "bootstrap_mean_if_half": 0.2628443116471576,
+      "bootstrap_ci95_if_half": [
+        0.24559591735898065,
+        0.2800471686723967
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8636845710506426,
+      "bootstrap_mean_classical_auc": 0.9496742782932919,
+      "bootstrap_ci95_classical_auc": [
+        0.9282068847696054,
+        0.9663224980691498
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7541.8,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.41615984373178966,
+        "sd": 0.0108216745387075,
+        "median": 0.41559793218294383,
+        "p05": 0.3977710086818108,
+        "p95": 0.4345033904689439
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2628443116471576,
+        "sd": 0.008635233345362574,
+        "median": 0.26231770137518007,
+        "p05": 0.24831227131280506,
+        "p95": 0.2775638516788736
+      }
+    },
+    {
+      "drug": "paclitaxel",
+      "n_cell_lines": 952,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4598951230767146,
+      "point_estimate_if_half": 0.2986128607004097,
+      "bootstrap_mean_if_full": 0.44272076416547423,
+      "bootstrap_ci95_if_full": [
+        0.4253570131524272,
+        0.45814607144943836
+      ],
+      "bootstrap_mean_if_half": 0.28436274192125155,
+      "bootstrap_ci95_if_half": [
+        0.27017824504993726,
+        0.29716394491677706
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7872286883030065,
+      "bootstrap_mean_classical_auc": 0.9290437917538855,
+      "bootstrap_ci95_classical_auc": [
+        0.9038293037307077,
+        0.9487751797621372
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7503.9,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.44272076416547423,
+        "sd": 0.008981730908525548,
+        "median": 0.4432528701680172,
+        "p05": 0.42895259973418526,
+        "p95": 0.4571335082823644
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.28436274192125155,
+        "sd": 0.0073979917184134715,
+        "median": 0.28474974074484677,
+        "p05": 0.27303987596613494,
+        "p95": 0.29631087338458995
+      }
+    },
+    {
+      "drug": "palbociclib",
+      "n_cell_lines": 962,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4585696114574785,
+      "point_estimate_if_half": 0.2974961534857715,
+      "bootstrap_mean_if_full": 0.4274915137106825,
+      "bootstrap_ci95_if_full": [
+        0.4080286721994937,
+        0.4480257176699913
+      ],
+      "bootstrap_mean_if_half": 0.27193774612882626,
+      "bootstrap_ci95_if_half": [
+        0.2563152167245446,
+        0.2887475216523742
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8084758679333803,
+      "bootstrap_mean_classical_auc": 0.9314698899012512,
+      "bootstrap_ci95_classical_auc": [
+        0.9077374264033262,
+        0.9525828120105108
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7495.4,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4274915137106825,
+        "sd": 0.01037350598575516,
+        "median": 0.42733498188009034,
+        "p05": 0.41002611393442645,
+        "p95": 0.4442686205011284
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.27193774612882626,
+        "sd": 0.008393905216863153,
+        "median": 0.2717605006669202,
+        "p05": 0.2579016665255491,
+        "p95": 0.2855755390588377
+      }
+    },
+    {
+      "drug": "rucaparib",
+      "n_cell_lines": 942,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4429071071284342,
+      "point_estimate_if_half": 0.2844448838961894,
+      "bootstrap_mean_if_full": 0.4326468511596002,
+      "bootstrap_ci95_if_full": [
+        0.4145085695147783,
+        0.44658171135492863
+      ],
+      "bootstrap_mean_if_half": 0.2761095248833252,
+      "bootstrap_ci95_if_half": [
+        0.26149863707014975,
+        0.28754228814126775
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8191636593364321,
+      "bootstrap_mean_classical_auc": 0.9327528561025501,
+      "bootstrap_ci95_classical_auc": [
+        0.9133626796859804,
+        0.9517845950879882
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7147.6,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4326468511596002,
+        "sd": 0.009004053984783909,
+        "median": 0.4331228888612934,
+        "p05": 0.416322089204328,
+        "p95": 0.44474842040302204
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2761095248833252,
+        "sd": 0.007306594435463264,
+        "median": 0.2764482195497183,
+        "p05": 0.26293077157454414,
+        "p95": 0.2859817462273502
+      }
+    },
+    {
+      "drug": "talazoparib",
+      "n_cell_lines": 950,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45919165300281395,
+      "point_estimate_if_half": 0.29801996718002755,
+      "bootstrap_mean_if_full": 0.4448007951480333,
+      "bootstrap_ci95_if_full": [
+        0.4279146539538853,
+        0.45914151668387004
+      ],
+      "bootstrap_mean_if_half": 0.2860742535215698,
+      "bootstrap_ci95_if_half": [
+        0.2722293701382671,
+        0.29800547514315634
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7762548678970614,
+      "bootstrap_mean_classical_auc": 0.9210050007770525,
+      "bootstrap_ci95_classical_auc": [
+        0.8915875805766689,
+        0.9458425764645698
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6088.3,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4448007951480333,
+        "sd": 0.008442239591583274,
+        "median": 0.44555139699364643,
+        "p05": 0.42976845406796643,
+        "p95": 0.458436927022069
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2860742535215698,
+        "sd": 0.00697671073728764,
+        "median": 0.2866562077155068,
+        "p05": 0.2737258424987149,
+        "p95": 0.2973910135920396
+      }
+    },
+    {
+      "drug": "temozolomide",
+      "n_cell_lines": 959,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.43974211770084404,
+      "point_estimate_if_half": 0.28183938225189503,
+      "bootstrap_mean_if_full": 0.4092372355296856,
+      "bootstrap_ci95_if_full": [
+        0.3858086775406445,
+        0.42993408753861767
+      ],
+      "bootstrap_mean_if_half": 0.25735500303137654,
+      "bootstrap_ci95_if_half": [
+        0.23905967998169872,
+        0.27386888878716836
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7947937305749807,
+      "bootstrap_mean_classical_auc": 0.925747088856658,
+      "bootstrap_ci95_classical_auc": [
+        0.9004054032083826,
+        0.9469961479569354
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6132.5,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4092372355296856,
+        "sd": 0.011044816554881228,
+        "median": 0.4098749471302028,
+        "p05": 0.3896319632019503,
+        "p95": 0.42785028160743116
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.25735500303137654,
+        "sd": 0.008711796419858664,
+        "median": 0.2578110491373736,
+        "p05": 0.2419854932714573,
+        "p95": 0.2721725753133383
+      }
+    },
+    {
+      "drug": "teniposide",
+      "n_cell_lines": 715,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4260888772440031,
+      "point_estimate_if_half": 0.2707197827650523,
+      "bootstrap_mean_if_full": 0.41622785007299357,
+      "bootstrap_ci95_if_full": [
+        0.3934444786397307,
+        0.4373148972341272
+      ],
+      "bootstrap_mean_if_half": 0.2629102183904891,
+      "bootstrap_ci95_if_half": [
+        0.24493508257218477,
+        0.27986265947372546
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8393991989319092,
+      "bootstrap_mean_classical_auc": 0.9399182722704142,
+      "bootstrap_ci95_classical_auc": [
+        0.9165093748782485,
+        0.9630335858379011
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 5448.3,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.41622785007299357,
+        "sd": 0.011365996218400176,
+        "median": 0.4160901140749479,
+        "p05": 0.39797652741450734,
+        "p95": 0.43416378381036674
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2629102183904891,
+        "sd": 0.009056602556487431,
+        "median": 0.26273990983037676,
+        "p05": 0.2484360483411348,
+        "p95": 0.27728549262988733
+      }
+    },
+    {
+      "drug": "veliparib",
+      "n_cell_lines": 943,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4370753534391072,
+      "point_estimate_if_half": 0.2796522240537067,
+      "bootstrap_mean_if_full": 0.41367926910327923,
+      "bootstrap_ci95_if_full": [
+        0.391405167909103,
+        0.4324852570373826
+      ],
+      "bootstrap_mean_if_half": 0.2608773482755181,
+      "bootstrap_ci95_if_half": [
+        0.24336026234687028,
+        0.2759258939630633
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8387765585515506,
+      "bootstrap_mean_classical_auc": 0.9398060421369692,
+      "bootstrap_ci95_classical_auc": [
+        0.9187062071049585,
+        0.9587124882638619
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6017.0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.41367926910327923,
+        "sd": 0.011301596803302852,
+        "median": 0.41491568238094,
+        "p05": 0.3961072486085716,
+        "p95": 0.4290376763101268
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2608773482755181,
+        "sd": 0.008937488698809158,
+        "median": 0.26178530276726797,
+        "p05": 0.24698766738487923,
+        "p95": 0.27312939771497746
+      }
+    },
+    {
+      "drug": "vinblastine",
+      "n_cell_lines": 738,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45894358610210634,
+      "point_estimate_if_half": 0.29781102233711915,
+      "bootstrap_mean_if_full": 0.42194544207467194,
+      "bootstrap_ci95_if_full": [
+        0.40241417999019374,
+        0.44166868685314153
+      ],
+      "bootstrap_mean_if_half": 0.2674777926127868,
+      "bootstrap_ci95_if_half": [
+        0.2519348836424595,
+        0.28349819593449577
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8016152466963278,
+      "bootstrap_mean_classical_auc": 0.9297980584852132,
+      "bootstrap_ci95_classical_auc": [
+        0.9007885684727789,
+        0.9524066274260301
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 5649.5,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.42194544207467194,
+        "sd": 0.010680958990306804,
+        "median": 0.4228316799619327,
+        "p05": 0.4041686574954431,
+        "p95": 0.4388948434452389
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2674777926127868,
+        "sd": 0.008564863125203383,
+        "median": 0.2681181416125311,
+        "p05": 0.25329043043584265,
+        "p95": 0.2811864387984396
+      }
+    },
+    {
+      "drug": "vinorelbine",
+      "n_cell_lines": 950,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4423380362524918,
+      "point_estimate_if_half": 0.28397562921051933,
+      "bootstrap_mean_if_full": 0.4285649826461024,
+      "bootstrap_ci95_if_full": [
+        0.41033621722753916,
+        0.44692031730181747
+      ],
+      "bootstrap_mean_if_half": 0.2727995099841035,
+      "bootstrap_ci95_if_half": [
+        0.25815879397645375,
+        0.28777581507710753
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8114077076404765,
+      "bootstrap_mean_classical_auc": 0.930789097304517,
+      "bootstrap_ci95_classical_auc": [
+        0.9075357932019444,
+        0.9526069902548726
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6078.7,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4285649826461024,
+        "sd": 0.009523742695533861,
+        "median": 0.4290832536123793,
+        "p05": 0.4128680111665616,
+        "p95": 0.4442397912337428
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2727995099841035,
+        "sd": 0.007708238851068067,
+        "median": 0.2731506264026545,
+        "p05": 0.2601684770028412,
+        "p95": 0.2855683251636423
+      }
+    }
+  ],
+  "status": "DEPRECATED_LEAKAGE_DO_NOT_USE_FOR_CI_OR_STABILITY_INFERENCE",
+  "deprecation_reason": "Row-level bootstrap followed by StratifiedKFold allowed duplicate copies of original cell lines to cross train/test folds. Superseded by icbinb_d1_if_bootstrap_ci_v2_groupkfold.json."
+}

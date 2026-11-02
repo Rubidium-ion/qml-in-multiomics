@@ -1,0 +1,1438 @@
+{
+  "format": "icbinb_d1_if_bootstrap_ci_v2_groupkfold.v1",
+  "created": "2026-10-03 03:45:57 +0800",
+  "task": "D1 Test 1: cell-line bootstrap 95% CI on interaction fraction (full-pipeline re-run each replicate: 5-fold fold-local feature selection + GBDT + SHAP TreeExplainer)",
+  "n_bootstrap_replicates": 200,
+  "n_drugs": 22,
+  "boot_seed_base": 20261002,
+  "resampling": "original cell-line clusters resampled with replacement; duplicate copies retain original cell-line group ID; each replicate reruns full pipeline (not final-IF resampling)",
+  "conventions": {
+    "full": "sum|offdiag| (each symmetric pair counted twice; the pre-specified convention under which the 0.40 gate was calibrated)",
+    "half": "0.5*sum|offdiag| (each pair once)"
+  },
+  "ci_method": "Percentile and basic intervals are reported as sensitivity intervals only; main D1 interpretation uses group-resampling stability diagnostics (point, ECDF, median, bias, SD/IQR, Pr_boot(IF>=0.40)).",
+  "pipeline": {
+    "feature_selection": "top-120 variance on fold train + 68-gene DDR/HR whitelist (protected)",
+    "gbdt": "GradientBoostingClassifier(300, lr=0.05, depth=3, subsample=0.8, seed=42)",
+    "shap": "shap 0.52.0 TreeExplainer.shap_interaction_values (exact)",
+    "cv": "5-fold GroupKFold by original cell-line ID (duplicate-leakage protected)",
+    "if_per_replicate": "mean of per-fold IF over the 5 folds"
+  },
+  "gate_threshold": 0.4,
+  "qa": {
+    "fold_train_test_original_cell_line_overlap_required": 0,
+    "all_cohort_max_overlap": 0,
+    "v1_status": "deprecated-leakage: row-bootstrap plus stratified CV allowed duplicate original cell lines across train/test; do not use v1 CIs."
+  },
+  "note": "0.40 is the original pre-specified threshold; it is NOT reinterpreted as a data-derived optimum. CI is on the bootstrap distribution of per-replicate full-pipeline IFs.",
+  "cohorts": [
+    {
+      "drug": "5fluorouracil",
+      "n_cell_lines": 962,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.46083530983750504,
+      "point_estimate_if_half": 0.2994061082500879,
+      "bootstrap_mean_if_full": 0.4407250040229516,
+      "bootstrap_median_if_full": 0.440404140372737,
+      "bootstrap_bias_if_full": -0.02011030581455342,
+      "bootstrap_sd_if_full": 0.008177652193722676,
+      "bootstrap_iqr_if_full": 0.01125965585983707,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.42498016838980734,
+        0.45595639058238097
+      ],
+      "basic_ci95_if_full": [
+        0.4657142290926291,
+        0.4966904512852027
+      ],
+      "bootstrap_mean_if_half": 0.282725626389692,
+      "bootstrap_median_if_half": 0.2824269141607821,
+      "bootstrap_bias_if_half": -0.01668048186039589,
+      "bootstrap_sd_if_half": 0.006722817587146424,
+      "bootstrap_iqr_if_half": 0.009243940748591584,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.26985605557545195,
+        0.29531265997232997
+      ],
+      "basic_ci95_if_half": [
+        0.3034995565278458,
+        0.32895616092472385
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7662967173938542,
+      "bootstrap_mean_classical_auc": 0.7328527040440932,
+      "bootstrap_ci95_classical_auc": [
+        0.6861964055605028,
+        0.7759378758754012
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7925.9,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4407250040229516,
+        "sd": 0.008177652193722676,
+        "median": 0.440404140372737,
+        "p05": 0.42704967465384075,
+        "p95": 0.4535553168883819
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.282725626389692,
+        "sd": 0.006722817587146424,
+        "median": 0.2824269141607821,
+        "p05": 0.27153912286710163,
+        "p95": 0.29330730189433896
+      }
+    },
+    {
+      "drug": "bleomycin",
+      "n_cell_lines": 715,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4727536068036195,
+      "point_estimate_if_half": 0.30954638944289237,
+      "bootstrap_mean_if_full": 0.45487329724681347,
+      "bootstrap_median_if_full": 0.45563142399250267,
+      "bootstrap_bias_if_full": -0.01788030955680603,
+      "bootstrap_sd_if_full": 0.009361289102087094,
+      "bootstrap_iqr_if_full": 0.01373340737342943,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.43698284224307976,
+        0.47175567075539265
+      ],
+      "basic_ci95_if_full": [
+        0.47375154285184634,
+        0.5085243713641592
+      ],
+      "bootstrap_mean_if_half": 0.29449570081545245,
+      "bootstrap_median_if_half": 0.29515775250488896,
+      "bootstrap_bias_if_half": -0.015050688627439912,
+      "bootstrap_sd_if_half": 0.007828085901285827,
+      "bootstrap_iqr_if_half": 0.011478745634752652,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.27961500919773785,
+        0.30872102859942585
+      ],
+      "basic_ci95_if_half": [
+        0.3103717502863589,
+        0.3394777696880469
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.6334199673638926,
+      "bootstrap_mean_classical_auc": 0.6108330467182338,
+      "bootstrap_ci95_classical_auc": [
+        0.5359591673162554,
+        0.6736749291130831
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 5823.0,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.45487329724681347,
+        "sd": 0.009361289102087094,
+        "median": 0.45563142399250267,
+        "p05": 0.43972174261766356,
+        "p95": 0.46893614021197816
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.29449570081545245,
+        "sd": 0.007828085901285827,
+        "median": 0.29515775250488896,
+        "p05": 0.28185956699694775,
+        "p95": 0.3062896212610776
+      }
+    },
+    {
+      "drug": "bortezomib",
+      "n_cell_lines": 951,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.474602668653256,
+      "point_estimate_if_half": 0.3111338002894226,
+      "bootstrap_mean_if_full": 0.4530352242991107,
+      "bootstrap_median_if_full": 0.45409103251799005,
+      "bootstrap_bias_if_full": -0.021567444354145315,
+      "bootstrap_sd_if_full": 0.0075595725485172365,
+      "bootstrap_iqr_if_full": 0.008955301454684927,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.43673104116748374,
+        0.4674543637359761
+      ],
+      "basic_ci95_if_full": [
+        0.4817509735705359,
+        0.5124742961390283
+      ],
+      "bootstrap_mean_if_half": 0.2929333505587091,
+      "bootstrap_median_if_half": 0.2937886082627458,
+      "bootstrap_bias_if_half": -0.018200449730713497,
+      "bootstrap_sd_if_half": 0.006303732457880932,
+      "bootstrap_iqr_if_half": 0.007536352985019812,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.2793843673028368,
+        0.3050432209000421
+      ],
+      "basic_ci95_if_half": [
+        0.3172243796788031,
+        0.34288323327600845
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7225749865707164,
+      "bootstrap_mean_classical_auc": 0.7177425090334111,
+      "bootstrap_ci95_classical_auc": [
+        0.6588273923811612,
+        0.779396643901068
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7843.7,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4530352242991107,
+        "sd": 0.0075595725485172365,
+        "median": 0.45409103251799005,
+        "p05": 0.43980985204322515,
+        "p95": 0.46648544854876445
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2929333505587091,
+        "sd": 0.006303732457880932,
+        "median": 0.2937886082627458,
+        "p05": 0.2819401385976551,
+        "p95": 0.3042038270052
+      }
+    },
+    {
+      "drug": "camptothecin",
+      "n_cell_lines": 962,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45686527191997484,
+      "point_estimate_if_half": 0.29606311335395097,
+      "bootstrap_mean_if_full": 0.4313372653590561,
+      "bootstrap_median_if_full": 0.4313993977850872,
+      "bootstrap_bias_if_full": -0.025528006560918748,
+      "bootstrap_sd_if_full": 0.009296306219274936,
+      "bootstrap_iqr_if_full": 0.011629633670181716,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.4139794820046085,
+        0.4481212317182089
+      ],
+      "basic_ci95_if_full": [
+        0.4656093121217408,
+        0.4997510618353412
+      ],
+      "bootstrap_mean_if_half": 0.27505830817572824,
+      "bootstrap_median_if_half": 0.27504163193061065,
+      "bootstrap_bias_if_half": -0.02100480517822273,
+      "bootstrap_sd_if_half": 0.0075472943145996375,
+      "bootstrap_iqr_if_half": 0.009436738290215407,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.26105206385460783,
+        0.28881157266067603
+      ],
+      "basic_ci95_if_half": [
+        0.3033146540472259,
+        0.3310741628532941
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8133755725949383,
+      "bootstrap_mean_classical_auc": 0.7839620466961533,
+      "bootstrap_ci95_classical_auc": [
+        0.7388612625137194,
+        0.8266378508872384
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7867.0,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4313372653590561,
+        "sd": 0.009296306219274936,
+        "median": 0.4313993977850872,
+        "p05": 0.4163978505493263,
+        "p95": 0.44594590478319396
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.27505830817572824,
+        "sd": 0.0075472943145996375,
+        "median": 0.27504163193061065,
+        "p05": 0.2629567424818911,
+        "p95": 0.2869836827176196
+      }
+    },
+    {
+      "drug": "cisplatin",
+      "n_cell_lines": 757,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4416252110473584,
+      "point_estimate_if_half": 0.2833883185085197,
+      "bootstrap_mean_if_full": 0.4300135583015606,
+      "bootstrap_median_if_full": 0.4309014013453538,
+      "bootstrap_bias_if_full": -0.01161165274579784,
+      "bootstrap_sd_if_full": 0.009654917245101936,
+      "bootstrap_iqr_if_full": 0.014306367577341328,
+      "pr_boot_if_full_ge_0_40": 0.995,
+      "bootstrap_ci95_if_full": [
+        0.40924679888521254,
+        0.44749057668012504
+      ],
+      "basic_ci95_if_full": [
+        0.4357598454145918,
+        0.4740036232095043
+      ],
+      "bootstrap_mean_if_half": 0.2739991548430694,
+      "bootstrap_median_if_half": 0.2746678836037343,
+      "bootstrap_bias_if_half": -0.009389163665450284,
+      "bootstrap_sd_if_half": 0.007809390144103335,
+      "bootstrap_iqr_if_half": 0.0116386492392207,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.25730173045822735,
+        0.2883206870639434
+      ],
+      "basic_ci95_if_half": [
+        0.27845594995309597,
+        0.30947490655881205
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8085442763872887,
+      "bootstrap_mean_classical_auc": 0.8009791936913903,
+      "bootstrap_ci95_classical_auc": [
+        0.7529613676588058,
+        0.8459903673160257
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6116.9,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4300135583015606,
+        "sd": 0.009654917245101936,
+        "median": 0.4309014013453538,
+        "p05": 0.41346053886049483,
+        "p95": 0.44441194962366304
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2739991548430694,
+        "sd": 0.007809390144103335,
+        "median": 0.2746678836037343,
+        "p05": 0.2606132060359896,
+        "p95": 0.2857588019036195
+      }
+    },
+    {
+      "drug": "cytarabine",
+      "n_cell_lines": 740,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4318840373592392,
+      "point_estimate_if_half": 0.2754158797235453,
+      "bootstrap_mean_if_full": 0.42125423724338285,
+      "bootstrap_median_if_full": 0.42216035836666366,
+      "bootstrap_bias_if_full": -0.010629800115856347,
+      "bootstrap_sd_if_full": 0.009038328305933105,
+      "bootstrap_iqr_if_full": 0.012002173338285238,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.40488681022873446,
+        0.43810109353546506
+      ],
+      "basic_ci95_if_full": [
+        0.4256669811830133,
+        0.4588812644897439
+      ],
+      "bootstrap_mean_if_half": 0.26692951121488323,
+      "bootstrap_median_if_half": 0.2675686207332045,
+      "bootstrap_bias_if_half": -0.008486368508662079,
+      "bootstrap_sd_if_half": 0.0072508115782723755,
+      "bootstrap_iqr_if_half": 0.009604150665404765,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.25387118659141755,
+        0.28054441845404116
+      ],
+      "basic_ci95_if_half": [
+        0.27028734099304946,
+        0.29696057285567307
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7964937910883857,
+      "bootstrap_mean_classical_auc": 0.7770877088819083,
+      "bootstrap_ci95_classical_auc": [
+        0.7278560229584314,
+        0.8278745812926284
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6020.9,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.42125423724338285,
+        "sd": 0.009038328305933105,
+        "median": 0.42216035836666366,
+        "p05": 0.4062579442337048,
+        "p95": 0.43488772918526675
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.26692951121488323,
+        "sd": 0.0072508115782723755,
+        "median": 0.2675686207332045,
+        "p05": 0.2549747149225316,
+        "p95": 0.2779150439714704
+      }
+    },
+    {
+      "drug": "docetaxel",
+      "n_cell_lines": 962,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4730835674463431,
+      "point_estimate_if_half": 0.30982937727321797,
+      "bootstrap_mean_if_full": 0.4544718395294926,
+      "bootstrap_median_if_full": 0.45545642048407287,
+      "bootstrap_bias_if_full": -0.018611727916850507,
+      "bootstrap_sd_if_full": 0.006809696683214537,
+      "bootstrap_iqr_if_full": 0.009048024700848034,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.4393298096609291,
+        0.4675220033814552
+      ],
+      "basic_ci95_if_full": [
+        0.478645131511231,
+        0.5068373252317571
+      ],
+      "bootstrap_mean_if_half": 0.294121324338397,
+      "bootstrap_median_if_half": 0.29492775271916927,
+      "bootstrap_bias_if_half": -0.01570805293482097,
+      "bootstrap_sd_if_half": 0.005692795113000836,
+      "bootstrap_iqr_if_half": 0.007575630798012378,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.28151567618800905,
+        0.3050862392932385
+      ],
+      "basic_ci95_if_half": [
+        0.3145725152531974,
+        0.3381430783584269
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7457565754750176,
+      "bootstrap_mean_classical_auc": 0.7256832337948828,
+      "bootstrap_ci95_classical_auc": [
+        0.6652784797093747,
+        0.7757715010353962
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7937.0,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4544718395294926,
+        "sd": 0.006809696683214537,
+        "median": 0.45545642048407287,
+        "p05": 0.44297383550158426,
+        "p95": 0.4646802564381682
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.294121324338397,
+        "sd": 0.005692795113000836,
+        "median": 0.29492775271916927,
+        "p05": 0.28454030032706,
+        "p95": 0.30269196278444144
+      }
+    },
+    {
+      "drug": "gemcitabine",
+      "n_cell_lines": 954,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45066456103152736,
+      "point_estimate_if_half": 0.2908760425254159,
+      "bootstrap_mean_if_full": 0.4392145749712851,
+      "bootstrap_median_if_full": 0.43925016454607657,
+      "bootstrap_bias_if_full": -0.011449986060242279,
+      "bootstrap_sd_if_full": 0.009411499542374,
+      "bootstrap_iqr_if_full": 0.013267082957200915,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.4208190581217656,
+        0.45533915782090395
+      ],
+      "basic_ci95_if_full": [
+        0.44598996424215076,
+        0.4805100639412891
+      ],
+      "bootstrap_mean_if_half": 0.28150227860721705,
+      "bootstrap_median_if_half": 0.2814933361403638,
+      "bootstrap_bias_if_half": -0.00937376391819883,
+      "bootstrap_sd_if_half": 0.0077215303474649985,
+      "bootstrap_iqr_if_half": 0.010909889993566513,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.26649610538002977,
+        0.29485406321538365
+      ],
+      "basic_ci95_if_half": [
+        0.2868980218354481,
+        0.315255979670802
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7523248028567177,
+      "bootstrap_mean_classical_auc": 0.7329605015580088,
+      "bootstrap_ci95_classical_auc": [
+        0.6849406394552842,
+        0.7886789708876963
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7851.4,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4392145749712851,
+        "sd": 0.009411499542374,
+        "median": 0.43925016454607657,
+        "p05": 0.4247480152901501,
+        "p95": 0.45389381048419997
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.28150227860721705,
+        "sd": 0.0077215303474649985,
+        "median": 0.2814933361403638,
+        "p05": 0.26969786363609877,
+        "p95": 0.29364486996791017
+      }
+    },
+    {
+      "drug": "irinotecan",
+      "n_cell_lines": 959,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45008487423136523,
+      "point_estimate_if_half": 0.29039323944152035,
+      "bootstrap_mean_if_full": 0.42564810890788907,
+      "bootstrap_median_if_full": 0.42535661362163935,
+      "bootstrap_bias_if_full": -0.02443676532347616,
+      "bootstrap_sd_if_full": 0.009054839711429319,
+      "bootstrap_iqr_if_full": 0.012514010835118883,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.4062201484314279,
+        0.4433486273653668
+      ],
+      "basic_ci95_if_full": [
+        0.45682112109736367,
+        0.49394960003130256
+      ],
+      "bootstrap_mean_if_half": 0.27045282181470776,
+      "bootstrap_median_if_half": 0.27016116306606364,
+      "bootstrap_bias_if_half": -0.01994041762681259,
+      "bootstrap_sd_if_half": 0.007297444651572876,
+      "bootstrap_iqr_if_half": 0.010050455115592216,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.254962833495376,
+        0.28482011984656835
+      ],
+      "basic_ci95_if_half": [
+        0.29596635903647234,
+        0.3258236453876647
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8032919337606838,
+      "bootstrap_mean_classical_auc": 0.7954964984693933,
+      "bootstrap_ci95_classical_auc": [
+        0.7476724014822067,
+        0.835301923095926
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7847.0,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.42564810890788907,
+        "sd": 0.009054839711429319,
+        "median": 0.42535661362163935,
+        "p05": 0.4103492599682577,
+        "p95": 0.44046638896104906
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.27045282181470776,
+        "sd": 0.007297444651572876,
+        "median": 0.27016116306606364,
+        "p05": 0.2582300663105339,
+        "p95": 0.28245335540498007
+      }
+    },
+    {
+      "drug": "methotrexate",
+      "n_cell_lines": 875,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4827969421031298,
+      "point_estimate_if_half": 0.3182151127301163,
+      "bootstrap_mean_if_full": 0.45851045793282497,
+      "bootstrap_median_if_full": 0.4591718184252308,
+      "bootstrap_bias_if_full": -0.024286484170304823,
+      "bootstrap_sd_if_full": 0.008451001962187798,
+      "bootstrap_iqr_if_full": 0.011395353328575553,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.44013455846269,
+        0.4748398471540565
+      ],
+      "basic_ci95_if_full": [
+        0.49075403705220305,
+        0.5254593257435696
+      ],
+      "bootstrap_mean_if_half": 0.2975306737939929,
+      "bootstrap_median_if_half": 0.2980552487191244,
+      "bootstrap_bias_if_half": -0.020684438936123428,
+      "bootstrap_sd_if_half": 0.007103337481899892,
+      "bootstrap_iqr_if_half": 0.009521852933302821,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.282198149587384,
+        0.3113744751039981
+      ],
+      "basic_ci95_if_half": [
+        0.3250557503562345,
+        0.35423207587284866
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7130000699342083,
+      "bootstrap_mean_classical_auc": 0.6979680392503309,
+      "bootstrap_ci95_classical_auc": [
+        0.6285435045157745,
+        0.7575454673369993
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7189.0,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.45851045793282497,
+        "sd": 0.008451001962187798,
+        "median": 0.4591718184252308,
+        "p05": 0.4438479257098365,
+        "p95": 0.4713165818321758
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2975306737939929,
+        "sd": 0.007103337481899892,
+        "median": 0.2980552487191244,
+        "p05": 0.2852387654450694,
+        "p95": 0.3083246568488235
+      }
+    },
+    {
+      "drug": "niraparib",
+      "n_cell_lines": 889,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.43589088937674086,
+      "point_estimate_if_half": 0.2786831726867501,
+      "bootstrap_mean_if_full": 0.4213192796322847,
+      "bootstrap_median_if_full": 0.42220143258161746,
+      "bootstrap_bias_if_full": -0.014571609744456149,
+      "bootstrap_sd_if_full": 0.008844866331550622,
+      "bootstrap_iqr_if_full": 0.011504130375598498,
+      "pr_boot_if_full_ge_0_40": 0.99,
+      "bootstrap_ci95_if_full": [
+        0.4039741591827692,
+        0.4370852370868553
+      ],
+      "basic_ci95_if_full": [
+        0.4346965416666264,
+        0.46780761957071254
+      ],
+      "bootstrap_mean_if_half": 0.2669708716529236,
+      "bootstrap_median_if_half": 0.2676239901778917,
+      "bootstrap_bias_if_half": -0.011712301033826478,
+      "bootstrap_sd_if_half": 0.007092488356319807,
+      "bootstrap_iqr_if_half": 0.009192897099621677,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.2531438892546915,
+        0.2796822044650906
+      ],
+      "basic_ci95_if_half": [
+        0.27768414090840954,
+        0.30422245611880866
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8534877616927892,
+      "bootstrap_mean_classical_auc": 0.8413065684402886,
+      "bootstrap_ci95_classical_auc": [
+        0.8007030436193874,
+        0.8802811606747496
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7262.7,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4213192796322847,
+        "sd": 0.008844866331550622,
+        "median": 0.42220143258161746,
+        "p05": 0.40617376603240074,
+        "p95": 0.43465779156952405
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2669708716529236,
+        "sd": 0.007092488356319807,
+        "median": 0.2676239901778917,
+        "p05": 0.2548720716219431,
+        "p95": 0.27771860161484196
+      }
+    },
+    {
+      "drug": "olaparib",
+      "n_cell_lines": 961,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4265159518653404,
+      "point_estimate_if_half": 0.2710646811901069,
+      "bootstrap_mean_if_full": 0.4169776626181765,
+      "bootstrap_median_if_full": 0.41761265060425357,
+      "bootstrap_bias_if_full": -0.009538289247163934,
+      "bootstrap_sd_if_full": 0.008372925854436958,
+      "bootstrap_iqr_if_full": 0.011828938587771842,
+      "pr_boot_if_full_ge_0_40": 0.975,
+      "bootstrap_ci95_if_full": [
+        0.4004978253152902,
+        0.4317305557601806
+      ],
+      "basic_ci95_if_full": [
+        0.42130134797050023,
+        0.4525340784153906
+      ],
+      "bootstrap_mean_if_half": 0.2634877587734826,
+      "bootstrap_median_if_half": 0.26397455692438554,
+      "bootstrap_bias_if_half": -0.007576922416624277,
+      "bootstrap_sd_if_half": 0.006675511707861861,
+      "bootstrap_iqr_if_half": 0.009431014812557148,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.2504083706013262,
+        0.2753147536512158
+      ],
+      "basic_ci95_if_half": [
+        0.266814608728998,
+        0.2917209917788876
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8601249527588815,
+      "bootstrap_mean_classical_auc": 0.8490478083448206,
+      "bootstrap_ci95_classical_auc": [
+        0.8157382527302806,
+        0.88451930540557
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7882.3,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4169776626181765,
+        "sd": 0.008372925854436958,
+        "median": 0.41761265060425357,
+        "p05": 0.40300803600879,
+        "p95": 0.42953362460755545
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2634877587734826,
+        "sd": 0.006675511707861861,
+        "median": 0.26397455692438554,
+        "p05": 0.2524367014221164,
+        "p95": 0.27355943686061773
+      }
+    },
+    {
+      "drug": "oxaliplatin",
+      "n_cell_lines": 961,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.42293109223865905,
+      "point_estimate_if_half": 0.268175404484394,
+      "bootstrap_mean_if_full": 0.4139609483188265,
+      "bootstrap_median_if_full": 0.4137597317903222,
+      "bootstrap_bias_if_full": -0.00897014391983253,
+      "bootstrap_sd_if_full": 0.009890534669492222,
+      "bootstrap_iqr_if_full": 0.013069505180939467,
+      "pr_boot_if_full_ge_0_40": 0.92,
+      "bootstrap_ci95_if_full": [
+        0.39681845264106186,
+        0.4340391712525193
+      ],
+      "basic_ci95_if_full": [
+        0.4118230132247988,
+        0.44904373183625623
+      ],
+      "bootstrap_mean_if_half": 0.26110536942650353,
+      "bootstrap_median_if_half": 0.2608987152069608,
+      "bootstrap_bias_if_half": -0.007070035057890445,
+      "bootstrap_sd_if_half": 0.007868035411774223,
+      "bootstrap_iqr_if_half": 0.010399592758387532,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.2475472928015933,
+        0.2772417712524691
+      ],
+      "basic_ci95_if_half": [
+        0.2591090377163188,
+        0.2888035161671947
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8636845710506426,
+      "bootstrap_mean_classical_auc": 0.8531383287131067,
+      "bootstrap_ci95_classical_auc": [
+        0.8180960746223725,
+        0.8847669086410154
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7673.6,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4139609483188265,
+        "sd": 0.009890534669492222,
+        "median": 0.4137597317903222,
+        "p05": 0.39846450269997236,
+        "p95": 0.4297999557044321
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.26110536942650353,
+        "sd": 0.007868035411774223,
+        "median": 0.2608987152069608,
+        "p05": 0.24893273421660791,
+        "p95": 0.27377450596073477
+      }
+    },
+    {
+      "drug": "paclitaxel",
+      "n_cell_lines": 952,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4598951230767146,
+      "point_estimate_if_half": 0.2986128607004097,
+      "bootstrap_mean_if_full": 0.4400683247645111,
+      "bootstrap_median_if_full": 0.44040402417890306,
+      "bootstrap_bias_if_full": -0.01982679831220352,
+      "bootstrap_sd_if_full": 0.008327072251801204,
+      "bootstrap_iqr_if_full": 0.012893133969168025,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.4242165741728667,
+        0.4544831559767
+      ],
+      "basic_ci95_if_full": [
+        0.46530709017672917,
+        0.4955736719805625
+      ],
+      "bootstrap_mean_if_half": 0.28218935326621297,
+      "bootstrap_median_if_half": 0.2824457858271462,
+      "bootstrap_bias_if_half": -0.016423507434196738,
+      "bootstrap_sd_if_half": 0.0068373008983690425,
+      "bootstrap_iqr_if_half": 0.010551394857857777,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.2692271422697237,
+        0.2941037309449786
+      ],
+      "basic_ci95_if_half": [
+        0.3031219904558408,
+        0.3279985791310957
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7872286883030065,
+      "bootstrap_mean_classical_auc": 0.764893611291293,
+      "bootstrap_ci95_classical_auc": [
+        0.7120226810131584,
+        0.8190126941917983
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7650.4,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4400683247645111,
+        "sd": 0.008327072251801204,
+        "median": 0.44040402417890306,
+        "p05": 0.4259515171585855,
+        "p95": 0.4529903045067684
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.28218935326621297,
+        "sd": 0.0068373008983690425,
+        "median": 0.2824457858271462,
+        "p05": 0.27063411923222075,
+        "p95": 0.29286021510334276
+      }
+    },
+    {
+      "drug": "palbociclib",
+      "n_cell_lines": 962,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4585696114574785,
+      "point_estimate_if_half": 0.2974961534857715,
+      "bootstrap_mean_if_full": 0.4251437532528514,
+      "bootstrap_median_if_full": 0.42463385960466193,
+      "bootstrap_bias_if_full": -0.03342585820462707,
+      "bootstrap_sd_if_full": 0.010060690433024136,
+      "bootstrap_iqr_if_full": 0.013532984707045892,
+      "pr_boot_if_full_ge_0_40": 0.995,
+      "bootstrap_ci95_if_full": [
+        0.405647408055352,
+        0.4444989002278411
+      ],
+      "basic_ci95_if_full": [
+        0.47264032268711587,
+        0.511491814859605
+      ],
+      "bootstrap_mean_if_half": 0.27005999051128804,
+      "bootstrap_median_if_half": 0.2696476711404037,
+      "bootstrap_bias_if_half": -0.02743616297448348,
+      "bootstrap_sd_if_half": 0.008107176416306665,
+      "bootstrap_iqr_if_half": 0.010901541512572721,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.2544376053291215,
+        0.2858213687897929
+      ],
+      "basic_ci95_if_half": [
+        0.3091709381817501,
+        0.3405547016424215
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8084758679333803,
+      "bootstrap_mean_classical_auc": 0.7950308338218095,
+      "bootstrap_ci95_classical_auc": [
+        0.7448864701831261,
+        0.8392203173942773
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 7685.9,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4251437532528514,
+        "sd": 0.010060690433024136,
+        "median": 0.42463385960466193,
+        "p05": 0.4085295717022371,
+        "p95": 0.44056968853310446
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.27005999051128804,
+        "sd": 0.008107176416306665,
+        "median": 0.2696476711404037,
+        "p05": 0.25674327149792286,
+        "p95": 0.28253037063357206
+      }
+    },
+    {
+      "drug": "rucaparib",
+      "n_cell_lines": 942,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4429071071284342,
+      "point_estimate_if_half": 0.2844448838961894,
+      "bootstrap_mean_if_full": 0.42954802280449506,
+      "bootstrap_median_if_full": 0.43093101509415993,
+      "bootstrap_bias_if_full": -0.013359084323939119,
+      "bootstrap_sd_if_full": 0.008221639480028397,
+      "bootstrap_iqr_if_full": 0.011302066157025836,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.4119827726113559,
+        0.44167721665371973
+      ],
+      "basic_ci95_if_full": [
+        0.4441369976031486,
+        0.47383144164551244
+      ],
+      "bootstrap_mean_if_half": 0.27360008376697087,
+      "bootstrap_median_if_half": 0.2746694753194059,
+      "bootstrap_bias_if_half": -0.010844800129218513,
+      "bootstrap_sd_if_half": 0.006648877367059992,
+      "bootstrap_iqr_if_half": 0.009159030056472117,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.25947296497793865,
+        0.28347617967432465
+      ],
+      "basic_ci95_if_half": [
+        0.2854135881180541,
+        0.3094168028144401
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8191636593364321,
+      "bootstrap_mean_classical_auc": 0.8034512977589837,
+      "bootstrap_ci95_classical_auc": [
+        0.7624988259202274,
+        0.8415333914288677
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6152.3,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.42954802280449506,
+        "sd": 0.008221639480028397,
+        "median": 0.43093101509415993,
+        "p05": 0.4151218025087004,
+        "p95": 0.44079000632791365
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.27360008376697087,
+        "sd": 0.006648877367059992,
+        "median": 0.2746694753194059,
+        "p05": 0.2619771734555962,
+        "p95": 0.28276882731899805
+      }
+    },
+    {
+      "drug": "talazoparib",
+      "n_cell_lines": 950,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45919165300281395,
+      "point_estimate_if_half": 0.29801996718002755,
+      "bootstrap_mean_if_full": 0.4424625428319716,
+      "bootstrap_median_if_full": 0.44300313183617285,
+      "bootstrap_bias_if_full": -0.016729110170842332,
+      "bootstrap_sd_if_full": 0.00738514964689559,
+      "bootstrap_iqr_if_full": 0.009249363713449865,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.4288290073529384,
+        0.4564224213493067
+      ],
+      "basic_ci95_if_full": [
+        0.4619608846563212,
+        0.4895542986526895
+      ],
+      "bootstrap_mean_if_half": 0.28414771498473484,
+      "bootstrap_median_if_half": 0.2845491065720275,
+      "bootstrap_bias_if_half": -0.0138722521952927,
+      "bootstrap_sd_if_half": 0.006085331104355669,
+      "bootstrap_iqr_if_half": 0.007641108244187955,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.27297166968620457,
+        0.29572671906222636
+      ],
+      "basic_ci95_if_half": [
+        0.30031321529782873,
+        0.3230682646738505
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7762548678970614,
+      "bootstrap_mean_classical_auc": 0.7520495184755599,
+      "bootstrap_ci95_classical_auc": [
+        0.6988052045567341,
+        0.7953493925638976
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6193.9,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4424625428319716,
+        "sd": 0.00738514964689559,
+        "median": 0.44300313183617285,
+        "p05": 0.43019309857137383,
+        "p95": 0.45423664477246933
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.28414771498473484,
+        "sd": 0.006085331104355669,
+        "median": 0.2845491065720275,
+        "p05": 0.27415634460059035,
+        "p95": 0.29388305453933966
+      }
+    },
+    {
+      "drug": "temozolomide",
+      "n_cell_lines": 959,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.43974211770084404,
+      "point_estimate_if_half": 0.28183938225189503,
+      "bootstrap_mean_if_full": 0.40655160680256797,
+      "bootstrap_median_if_full": 0.4068824953479765,
+      "bootstrap_bias_if_full": -0.03319051089827607,
+      "bootstrap_sd_if_full": 0.010891780525579426,
+      "bootstrap_iqr_if_full": 0.015710867546681884,
+      "pr_boot_if_full_ge_0_40": 0.725,
+      "bootstrap_ci95_if_full": [
+        0.3831502807446229,
+        0.42717163375317074
+      ],
+      "basic_ci95_if_full": [
+        0.45231260164851733,
+        0.4963339546570652
+      ],
+      "bootstrap_mean_if_half": 0.25525265185654894,
+      "bootstrap_median_if_half": 0.2554369681641959,
+      "bootstrap_bias_if_half": -0.026586730395346092,
+      "bootstrap_sd_if_half": 0.008563170099623428,
+      "bootstrap_iqr_if_half": 0.012380415178536885,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.23702044322448915,
+        0.27166184599000304
+      ],
+      "basic_ci95_if_half": [
+        0.292016918513787,
+        0.32665832127930094
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.7947937305749807,
+      "bootstrap_mean_classical_auc": 0.7877094992063114,
+      "bootstrap_ci95_classical_auc": [
+        0.736680455950234,
+        0.8324591386010057
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6259.3,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.40655160680256797,
+        "sd": 0.010891780525579426,
+        "median": 0.4068824953479765,
+        "p05": 0.3901321369263423,
+        "p95": 0.4235473024060565
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.25525265185654894,
+        "sd": 0.008563170099623428,
+        "median": 0.2554369681641959,
+        "p05": 0.24235954006607408,
+        "p95": 0.2688207518790328
+      }
+    },
+    {
+      "drug": "teniposide",
+      "n_cell_lines": 715,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4260888772440031,
+      "point_estimate_if_half": 0.2707197827650523,
+      "bootstrap_mean_if_full": 0.4124988830281911,
+      "bootstrap_median_if_full": 0.4119621564912031,
+      "bootstrap_bias_if_full": -0.013589994215811974,
+      "bootstrap_sd_if_full": 0.010502351374263615,
+      "bootstrap_iqr_if_full": 0.01549431503373544,
+      "pr_boot_if_full_ge_0_40": 0.88,
+      "bootstrap_ci95_if_full": [
+        0.3928453055851471,
+        0.4301623019953432
+      ],
+      "basic_ci95_if_full": [
+        0.4220154524926629,
+        0.45933244890285907
+      ],
+      "bootstrap_mean_if_half": 0.2599623992146626,
+      "bootstrap_median_if_half": 0.25956952413228856,
+      "bootstrap_bias_if_half": -0.010757383550389743,
+      "bootstrap_sd_if_half": 0.008326585296282513,
+      "bootstrap_iqr_if_half": 0.012348099826187009,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.24447527678417336,
+        0.27408749106705416
+      ],
+      "basic_ci95_if_half": [
+        0.2673520744630505,
+        0.2969642887459313
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8393991989319092,
+      "bootstrap_mean_classical_auc": 0.8175034127080184,
+      "bootstrap_ci95_classical_auc": [
+        0.7706473792045204,
+        0.8573758571743321
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 5571.2,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4124988830281911,
+        "sd": 0.010502351374263615,
+        "median": 0.4119621564912031,
+        "p05": 0.3958339206158702,
+        "p95": 0.42790012165001595
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2599623992146626,
+        "sd": 0.008326585296282513,
+        "median": 0.25956952413228856,
+        "p05": 0.24682494436076052,
+        "p95": 0.27222775765642887
+      }
+    },
+    {
+      "drug": "veliparib",
+      "n_cell_lines": 943,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4370753534391072,
+      "point_estimate_if_half": 0.2796522240537067,
+      "bootstrap_mean_if_full": 0.4110128797480764,
+      "bootstrap_median_if_full": 0.41253727604559154,
+      "bootstrap_bias_if_full": -0.02606247369103082,
+      "bootstrap_sd_if_full": 0.010661105173305428,
+      "bootstrap_iqr_if_full": 0.01282912726217117,
+      "pr_boot_if_full_ge_0_40": 0.88,
+      "bootstrap_ci95_if_full": [
+        0.3895856387864086,
+        0.42868231640090587
+      ],
+      "basic_ci95_if_full": [
+        0.4454683904773085,
+        0.4845650680918058
+      ],
+      "bootstrap_mean_if_half": 0.25877179375409814,
+      "bootstrap_median_if_half": 0.2599189214376607,
+      "bootstrap_bias_if_half": -0.020880430299608566,
+      "bootstrap_sd_if_half": 0.008389371489299783,
+      "bootstrap_iqr_if_half": 0.01010380626924734,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.24204575277739887,
+        0.2728467186298976
+      ],
+      "basic_ci95_if_half": [
+        0.2864577294775158,
+        0.31725869533001455
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8387765585515506,
+      "bootstrap_mean_classical_auc": 0.8290885847463341,
+      "bootstrap_ci95_classical_auc": [
+        0.7924492532202116,
+        0.8734337330188637
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6142.8,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4110128797480764,
+        "sd": 0.010661105173305428,
+        "median": 0.41253727604559154,
+        "p05": 0.391276360348191,
+        "p95": 0.4253628784616098
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.25877179375409814,
+        "sd": 0.008389371489299783,
+        "median": 0.2599189214376607,
+        "p05": 0.24323562445138555,
+        "p95": 0.27020721112691864
+      }
+    },
+    {
+      "drug": "vinblastine",
+      "n_cell_lines": 738,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.45894358610210634,
+      "point_estimate_if_half": 0.29781102233711915,
+      "bootstrap_mean_if_full": 0.41837677519280936,
+      "bootstrap_median_if_full": 0.4182915401050743,
+      "bootstrap_bias_if_full": -0.04056681090929698,
+      "bootstrap_sd_if_full": 0.010478073790420133,
+      "bootstrap_iqr_if_full": 0.015374628005181412,
+      "pr_boot_if_full_ge_0_40": 0.97,
+      "bootstrap_ci95_if_full": [
+        0.3997833125264946,
+        0.43706668795049286
+      ],
+      "basic_ci95_if_full": [
+        0.4808204842537198,
+        0.5181038596777181
+      ],
+      "bootstrap_mean_if_half": 0.2646435914574042,
+      "bootstrap_median_if_half": 0.26449754245990825,
+      "bootstrap_bias_if_half": -0.033167430879714965,
+      "bootstrap_sd_if_half": 0.008373602763160274,
+      "bootstrap_iqr_if_half": 0.012369378587952284,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.2498474470746065,
+        0.27971567056655655
+      ],
+      "basic_ci95_if_half": [
+        0.31590637410768174,
+        0.3457745975996318
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": false,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8016152466963278,
+      "bootstrap_mean_classical_auc": 0.7931579972151052,
+      "bootstrap_ci95_classical_auc": [
+        0.7434387066352983,
+        0.8411689090566561
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 5800.2,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.41837677519280936,
+        "sd": 0.010478073790420133,
+        "median": 0.4182915401050743,
+        "p05": 0.40134392544333053,
+        "p95": 0.43470719636562066
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.2646435914574042,
+        "sd": 0.008373602763160274,
+        "median": 0.26449754245990825,
+        "p05": 0.25113593976109894,
+        "p95": 0.27776167844717986
+      }
+    },
+    {
+      "drug": "vinorelbine",
+      "n_cell_lines": 950,
+      "n_bootstrap_replicates": 200,
+      "point_estimate_if_full": 0.4423380362524918,
+      "point_estimate_if_half": 0.28397562921051933,
+      "bootstrap_mean_if_full": 0.4259091732771998,
+      "bootstrap_median_if_full": 0.42575800964293664,
+      "bootstrap_bias_if_full": -0.016428862975292002,
+      "bootstrap_sd_if_full": 0.008628925682112397,
+      "bootstrap_iqr_if_full": 0.010787160800946216,
+      "pr_boot_if_full_ge_0_40": 1.0,
+      "bootstrap_ci95_if_full": [
+        0.40933286608445374,
+        0.4425176117847175
+      ],
+      "basic_ci95_if_full": [
+        0.4421584607202661,
+        0.47534320642052985
+      ],
+      "bootstrap_mean_if_half": 0.27066249047832847,
+      "bootstrap_median_if_half": 0.2705146259548532,
+      "bootstrap_bias_if_half": -0.013313138732190866,
+      "bootstrap_sd_if_half": 0.006963124002938256,
+      "bootstrap_iqr_if_half": 0.008700994195583123,
+      "pr_boot_if_half_ge_0_40": 0.0,
+      "bootstrap_ci95_if_half": [
+        0.25741130894775976,
+        0.28414634891615764
+      ],
+      "basic_ci95_if_half": [
+        0.283804909504881,
+        0.3105399494732789
+      ],
+      "admit_at_0.40_full_point": true,
+      "admit_at_0.40_half_point": false,
+      "admit_at_0.40_full_ci_low": true,
+      "admit_at_0.40_half_ci_low": false,
+      "point_estimate_classical_auc": 0.8114077076404765,
+      "bootstrap_mean_classical_auc": 0.7938402390999468,
+      "bootstrap_ci95_classical_auc": [
+        0.7449516466988813,
+        0.8345607294381189
+      ],
+      "median_kept_features": 188.0,
+      "wall_sec": 6193.1,
+      "max_fold_group_overlap": 0,
+      "ecdf_full": {
+        "n_valid": 200,
+        "mean": 0.4259091732771998,
+        "sd": 0.008628925682112397,
+        "median": 0.42575800964293664,
+        "p05": 0.41143078824378987,
+        "p95": 0.43958110543176987
+      },
+      "ecdf_half": {
+        "n_valid": 200,
+        "mean": 0.27066249047832847,
+        "sd": 0.006963124002938256,
+        "median": 0.2705146259548532,
+        "p05": 0.2590521139374443,
+        "p95": 0.2817353733883903
+      }
+    }
+  ]
+}

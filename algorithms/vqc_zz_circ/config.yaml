@@ -1,0 +1,17 @@
+name: vqc_zz_circ
+version: 0.1.0
+framework: qiskit
+quantum: true
+description: >
+  VQC with ZZFeatureMap(entanglement='circular', reps=3) + RealAmplitudes(reps=3).
+  Configuration specified by authors via A2A 2026-08-08; sole delta vs vqc_qiskit is
+  feature-map depth, ansatz depth and entanglement topology.
+params:
+  n_qubits: 8
+  reps_fm: 3
+  reps_ansatz: 3
+  entanglement: circular
+  maxiter: 300
+  optimizer: cobyla
+  angle_scale: 1.5707963267948966
+  seed: 42

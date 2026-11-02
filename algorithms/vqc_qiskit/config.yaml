@@ -1,0 +1,9 @@
+quantum: true
+params:
+  n_qubits: 8
+  reps_fm: 1
+  reps_ansatz: 2
+  maxiter: 300
+  optimizer: cobyla
+  angle_scale: 1.5707963267948966  # pi/2
+  seed: 42

@@ -1,0 +1,24 @@
+{
+  "drug": "cytarabine",
+  "n": 740,
+  "pc1_auc": 0.8056164272380487,
+  "pc1_auc_seed_sd": 0.001407082732425598,
+  "pc1_explained_variance_train": 0.13599025706450144,
+  "pc1_test_projection_variance": 675.1381551106771,
+  "pc1_response_spearman_train": 0.4019332493497232,
+  "rank_gaussian_pc1_auc": 0.7791250710169629,
+  "random_orthogonal_auc": 0.5586234883532181,
+  "pc1_perm_null_values": [
+    0.002923422260209918,
+    0.0029276241548359394,
+    0.002921374747529626
+  ],
+  "pc1_perm_null_95": 0.0029272039653733374,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

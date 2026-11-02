@@ -1,0 +1,45 @@
+{
+  "format": "icbinb_e1_leakage_safe_pc1.v1",
+  "n_drugs": 20,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "protocol": "For each drug/seed/outer fold, preprocessing and PCA fit only on outer-train rows; held-out rows projected using the training fit. PC1-only logistic baseline evaluated on held-out fold. QK and tuned GBDT reused from frozen D3; no QK rerun.",
+  "pc1_flag": "PC1 train explained variance exceeds 95th percentile of feature-wise independently permuted expression null (three-seed aggregate per drug).",
+  "per_drug_csv": "benchmarks/results/icbinb_e1_pc1_per_drug.csv",
+  "flags": {
+    "if_gate_full_040": 20,
+    "pc1_perm95": 20,
+    "intersection": 20,
+    "union": 20
+  },
+  "associations": {
+    "pc1ev_vs_if_full": {
+      "spearman_rho": -0.11428571428571428,
+      "p": 0.6313917305184382
+    },
+    "pc1ev_vs_tuned_gbdt_auc": {
+      "spearman_rho": 0.09924812030075188,
+      "p": 0.6771888443218218
+    },
+    "pc1ev_vs_qsvm_minus_tuned_gbdt": {
+      "spearman_rho": 0.021052631578947364,
+      "p": 0.9297994024457079
+    }
+  },
+  "strata": {
+    "PARP": {
+      "n": 5,
+      "mean_pc1_auc": 0.8143881275900219,
+      "mean_qsvm_minus_tuned_gbdt": -0.0010375095973790566
+    },
+    "cytotoxic": {
+      "n": 15,
+      "mean_pc1_auc": 0.7545244507654331,
+      "mean_qsvm_minus_tuned_gbdt": -3.219853556728731e-05
+    }
+  },
+  "negative_controls": "Per-drug rank/Gaussianized PC1 and random orthogonal 1D projections are recorded; all fitted in outer training folds. PC2-PC10 and tissue-within centering are not separately run in this compact execution; sparse tissue strata require separately pre-specified handling."
+}

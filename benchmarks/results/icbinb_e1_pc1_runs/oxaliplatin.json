@@ -1,0 +1,24 @@
+{
+  "drug": "oxaliplatin",
+  "n": 961,
+  "pc1_auc": 0.8610825696019148,
+  "pc1_auc_seed_sd": 0.0007938672761561744,
+  "pc1_explained_variance_train": 0.1377882113059362,
+  "pc1_test_projection_variance": 687.7145670572917,
+  "pc1_response_spearman_train": 0.4015808551898052,
+  "rank_gaussian_pc1_auc": 0.8144585380448476,
+  "random_orthogonal_auc": 0.6122195058578986,
+  "pc1_perm_null_values": [
+    0.002409944776445627,
+    0.0024063370656222105,
+    0.002404189435765147
+  ],
+  "pc1_perm_null_95": 0.0024095840053632855,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

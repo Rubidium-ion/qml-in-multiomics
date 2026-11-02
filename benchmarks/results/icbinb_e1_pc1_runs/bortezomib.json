@@ -1,0 +1,24 @@
+{
+  "drug": "bortezomib",
+  "n": 951,
+  "pc1_auc": 0.7083363981438598,
+  "pc1_auc_seed_sd": 0.0014436030113940354,
+  "pc1_explained_variance_train": 0.13803772628307343,
+  "pc1_test_projection_variance": 689.344608561198,
+  "pc1_response_spearman_train": 0.2301682642762973,
+  "rank_gaussian_pc1_auc": 0.7092421515237667,
+  "random_orthogonal_auc": 0.5447080428894183,
+  "pc1_perm_null_values": [
+    0.0024252147413790226,
+    0.0024394977372139692,
+    0.002430990803986788
+  ],
+  "pc1_perm_null_95": 0.0024386470438912513,
+  "pc1_flag_perm95": true,
+  "seeds": [
+    42,
+    314,
+    2718
+  ],
+  "negative_control_note": "Rank/Gaussianized and random orthogonal controls use training-fitted transforms/directions per outer fold."
+}

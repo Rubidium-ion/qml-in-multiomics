@@ -1,0 +1,54 @@
+# OASIS-3 — longitudinal MR, Alzheimer's / cognitive status
+#
+# Access: requires a signed data-use agreement (not anonymous download).
+#   https://sites.wustl.edu/oasisbrains/home/oasis-3/
+# Distributed via NITRC/XNAT as NIfTI (BIDS-like), hence imaging_nifti rather
+# than imaging_dicom.
+#
+# LONGITUDINAL => GROUPED CV IS MANDATORY, NOT OPTIONAL.
+# Multiple sessions per subject. A random split puts session 1 in train and
+# session 2 in test for the SAME person, which leaks identity outright: the model
+# recognises the brain, not the disease. This config groups by subject_id so all
+# sessions of one subject stay on the same side of every split.
+#
+# `grouped` (GroupKFold) rather than leave_one_group_out: with ~600 subjects,
+# one fold per subject would be 600 folds of 1-3 samples each.
+#
+# `pattern` must select exactly ONE sequence. The adapter raises if a subject
+# matches multiple volumes, because averaging T1 and T2 statistics is
+# meaningless.
+
+modalities:
+  - type: imaging_nifti
+    root: ../data/oasis3/nifti               # one subdir per subject/session
+    pattern: T1w                             # exactly one volume per subject
+    modality: imaging_mr
+    normalize: zscore                        # MANDATORY — MR units are arbitrary
+    mask: otsu                               # removes air; else all subjects look alike
+
+labels:
+  path: ../data/oasis3/labels.csv            # session_id,cdr_binary,subject_id
+  id_column: session_id
+  label_column: cdr_binary
+  group_column: subject_id                   # keeps sessions of one person together
+
+run:
+  models:
+    logreg: {}
+    svm_rbf: {}
+    gbdt: {}
+    qsvm_fidelity: {}
+  cv: grouped                # GroupKFold by subject; NOT leave-one-subject-out
+  n_splits: 5
+  seed: 42
+  normalize: zscore
+  encoding_scale: pi
+  select_k: 10
+  selector: gbdt
+
+# Known limitation of the current feature set on this cohort: first-order
+# intensity statistics are a weak proxy for atrophy. Hippocampal volume and
+# cortical thickness (FreeSurfer tables ship WITH OASIS-3) are far stronger
+# features. Use those via `type: matrix` when comparing against published
+# baselines — otherwise we lose for feature-engineering reasons, not modelling
+# ones, and the comparison says nothing about quantum kernels.
